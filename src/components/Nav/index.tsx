@@ -5,7 +5,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logoLightMode from '../../assets/images/fit_trax_app_logo_lightmode.png';
 import { avatarStyle, drawerStyle, iconButtonStyle, navStyle, logoStyle, boxStyle, buttonStyle, drawerPaperStyle } from './styles';
 
-const ResponsiveAppBar = () => {
+const Nav = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [username, setUsername] = React.useState('');
   const [age, setAge] = React.useState('');
@@ -27,6 +27,11 @@ const ResponsiveAppBar = () => {
     console.log('form age :>> ', age);
     console.log('form fitness :>> ', fitness);
     console.log('form username :>> ', username);
+    setOpenDrawer(false);
+  };
+
+  const handleFormCancel = () => {
+    setOpenDrawer(false);
   };
 
   return (
@@ -39,7 +44,7 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="User Account">
-              <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle}>
+              <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">
                 <Avatar sx={avatarStyle}>
                   <PersonOutlineIcon sx={{ fontSize: 45 }} />
                 </Avatar>
@@ -74,6 +79,10 @@ const ResponsiveAppBar = () => {
                 <TextField value={fitness} onChange={(e) => setFitness(e.target.value)} label="Level of fitness" variant="outlined" />
               </Box>
 
+              <Button variant="outlined" onClick={handleFormCancel}>
+                Cancel
+              </Button>
+
               <Button variant="contained" onClick={handleFormSubmit} sx={buttonStyle}>
                 Save
               </Button>
@@ -85,4 +94,4 @@ const ResponsiveAppBar = () => {
   );
 };
 
-export default ResponsiveAppBar;
+export default Nav;
