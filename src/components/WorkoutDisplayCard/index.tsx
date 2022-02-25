@@ -1,7 +1,9 @@
-import { Grid, Container, Typography, Card, CardHeader, CardContent } from '@mui/material';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import { Grid, Container, Typography, Card, CardHeader, CardContent, Menu, MenuItem } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import { Box } from '@mui/system';
 import { useState, useEffect } from 'react';
-import internal from 'stream';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 import { workoutInitialState, exerciseInitialState } from '../../initialStates';
 
 type exercise = {
@@ -23,8 +25,9 @@ type workoutObj = {
 type workout = workoutObj[];
 
 export default function WorkoutDisplay() {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [allWorkout, setAllWorkout] = useState<workout>(workoutInitialState);
-  const [allExercise, setAllExercise] = useState<exercise>([]);
+  const [allExercise, setAllExercise] = useState<exercise>(exerciseInitialState);
   const [selectedWorkout, setSelectedWorkout] = useState<workoutObj>(workoutInitialState[0]);
 
   useEffect(() => {
@@ -49,9 +52,38 @@ export default function WorkoutDisplay() {
     getAllExercise();
   }, [selectedWorkout]);
 
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleClose = (el: workoutObj) => {
+    console.log(el);
+
+    setSelectedWorkout(el);
+    setAnchorElNav(null);
+  };
+
   return (
     <Container maxWidth="md">
-      <Typography>workout name</Typography>
+      <Box>
+        <IconButton
+          size="large"
+          aria-label="Select Workout"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleOpenNavMenu}
+          color="inherit"
+        >
+          <KeyboardArrowDownIcon />
+        </IconButton>
+        <Menu open={Boolean(anchorElNav)}>
+          {allWorkout.map((el) => (
+            <MenuItem key={el.id}>
+              <Typography onClick={() => handleClose(el)}>{el.workout_name}</Typography>
+            </MenuItem>
+          ))}
+        </Menu>
+      </Box>
+      <Typography variant="h1">{selectedWorkout.workout_name}</Typography>
       <Grid container>
         {allExercise.map((el) => (
           <Grid item xs={12} key={el.id}>
