@@ -20,6 +20,7 @@ export const drawerPaperStyle = {
 
 export const navStyle = {
   backgroundColor: '#fdfbf9',
+  boxShadow: 'none',
 };
 
 export const logoStyle = {
