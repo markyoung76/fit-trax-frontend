@@ -7,6 +7,7 @@ import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import Profile from '../Profile';
 import Mainboard from '../Mainboard';
+import ExercisePlanner from '../ExercisePlanner';
 import { lightTheme, darkTheme } from '../../styles/muiThemes';
 import './App.scss';
 
@@ -19,7 +20,7 @@ const App = (): JSX.Element => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Mainboard theme={isLight} />} />
-          {/* <Route path="/exercise-planner" element={} /> */}
+          <Route path="/exercise-planner" element={<ExercisePlanner />} />
           {/* <Route path="/meal-planner" element={} />
           <Route path="/hydration-tracker" element={} />
           <Route path="/meditation-portal" element={} /> */}

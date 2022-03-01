@@ -22,15 +22,16 @@ import {
   boxStyle,
   buttonStyle,
   drawerPaperStyle,
+  appBarStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 
-type props = {
+interface Props {
   isLight: boolean;
   setIsLight: Function;
-};
+}
 
-const Nav = ({ isLight, setIsLight }: props) => {
+const Nav = ({ isLight, setIsLight }: Props) => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [username, setUsername] = React.useState('');
   const [age, setAge] = React.useState('');
@@ -60,7 +61,7 @@ const Nav = ({ isLight, setIsLight }: props) => {
   };
 
   return (
-    <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
+    <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
