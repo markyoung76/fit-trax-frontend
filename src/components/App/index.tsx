@@ -7,6 +7,9 @@ import Nav from '../Nav';
 import Mainboard from '../Mainboard';
 import { lightTheme, darkTheme } from '../../styles/muiThemes';
 import './App.scss';
+import Homepage from '../Homepage';
+import WorkoutDisplay from '../WorkoutDisplayCard';
+import CreateExercise from '../CreateExercise';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -17,7 +20,11 @@ function App() {
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
       <Nav setIsLight={setIsLight} isLight={isLight} />
-      <Mainboard theme={isLight} />
+      <Routes>
+        <Route path="/" element={<Homepage isLight={isLight} />} />
+        {/* <Route path="/exercise-planner" element={<ExercisePlannerPage />} /> */}
+        <Route path="/workouts" element={<CreateExercise />} />
+      </Routes>
     </ThemeProvider>
   );
 }

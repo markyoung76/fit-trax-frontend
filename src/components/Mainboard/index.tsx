@@ -56,7 +56,7 @@ function Mainboard({ theme }: props) {
           <div style={imageStyle(card.img)}></div>
         </FrontSide>
 
-        <BackSide style={theme ? sideStyle : sideStyleDark}>{card.latestDetails}</BackSide>
+        <BackSide style={sideStyle}>{card.latestDetails}</BackSide>
       </Flippy>
     </Grid>
   );
