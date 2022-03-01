@@ -3,7 +3,7 @@ import { Drawer, AppBar, Box, Toolbar, IconButton, Typography, Container, Avatar
 import TextField from '@mui/material/TextField';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logoLightMode from '../../assets/images/fit_trax_app_logo_lightmode.png';
-import { avatarStyle, drawerStyle, iconButtonStyle, navStyle, logoStyle, boxStyle, buttonStyle, drawerPaperStyle } from './styles';
+import { avatarStyle, drawerStyle, iconButtonStyle, logoStyle, boxStyle, buttonStyle, drawerPaperStyle } from './styles';
 
 const Nav = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -35,7 +35,7 @@ const Nav = () => {
   };
 
   return (
-    <AppBar sx={navStyle} position="static">
+    <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>

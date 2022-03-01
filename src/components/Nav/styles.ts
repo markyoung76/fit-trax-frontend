@@ -18,10 +18,6 @@ export const drawerPaperStyle = {
   backgroundColor: '#fdfbf9',
 };
 
-export const navStyle = {
-  backgroundColor: '#fdfbf9',
-};
-
 export const logoStyle = {
   height: '150px',
 };
