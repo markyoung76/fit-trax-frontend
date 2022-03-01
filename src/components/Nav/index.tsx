@@ -55,7 +55,7 @@ const Nav = () => {
   };
 
   return (
-    <AppBar sx={navStyle} position="static">
+    <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
