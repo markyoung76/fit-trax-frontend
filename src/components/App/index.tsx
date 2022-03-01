@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 import { ThemeProvider } from '@mui/material';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import Nav from '../Nav';
 import Mainboard from '../Mainboard';
