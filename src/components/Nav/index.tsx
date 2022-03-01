@@ -1,9 +1,29 @@
-import * as React from 'react';
-import { Drawer, AppBar, Box, Toolbar, IconButton, Typography, Container, Avatar, Tooltip, Button } from '@mui/material';
+import React from 'react';
+import {
+  Drawer,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Avatar,
+  Tooltip,
+  Button,
+} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logoLightMode from '../../assets/images/fit_trax_app_logo_lightmode.png';
-import { avatarStyle, drawerStyle, iconButtonStyle, logoStyle, boxStyle, buttonStyle, drawerPaperStyle } from './styles';
+import {
+  avatarStyle,
+  drawerStyle,
+  iconButtonStyle,
+  navStyle,
+  logoStyle,
+  boxStyle,
+  buttonStyle,
+  drawerPaperStyle,
+} from './styles';
 
 const Nav = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -13,7 +33,10 @@ const Nav = () => {
   const [gender, setGender] = React.useState('');
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    ) {
       return;
     }
     setOpenDrawer(open);
@@ -21,12 +44,9 @@ const Nav = () => {
 
   const handleFormSubmit = () => {
     /**
-     * @TODO: Waiting for API to submit the form
+     * @TODO:
+     * Waiting for API to submit the form state
      */
-    console.log('form gender :>> ', gender);
-    console.log('form age :>> ', age);
-    console.log('form fitness :>> ', fitness);
-    console.log('form username :>> ', username);
     setOpenDrawer(false);
   };
 
@@ -64,7 +84,12 @@ const Nav = () => {
               <h3>User Account</h3>
 
               <Box sx={boxStyle}>
-                <TextField value={username} onChange={(e) => setUsername(e.target.value)} label="Username" variant="outlined" />
+                <TextField
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  label="Username"
+                  variant="outlined"
+                />
               </Box>
 
               <Box sx={boxStyle}>
@@ -72,11 +97,21 @@ const Nav = () => {
               </Box>
 
               <Box sx={boxStyle}>
-                <TextField value={gender} onChange={(e) => setGender(e.target.value)} label="Gender" variant="outlined" />
+                <TextField
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  label="Gender"
+                  variant="outlined"
+                />
               </Box>
 
               <Box sx={boxStyle}>
-                <TextField value={fitness} onChange={(e) => setFitness(e.target.value)} label="Level of fitness" variant="outlined" />
+                <TextField
+                  value={fitness}
+                  onChange={(e) => setFitness(e.target.value)}
+                  label="Level of fitness"
+                  variant="outlined"
+                />
               </Box>
 
               <Button variant="outlined" onClick={handleFormCancel}>
