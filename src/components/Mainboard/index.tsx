@@ -7,7 +7,7 @@ import mealPlanner from '../../assets/images/meal_planner.png';
 import hydrationTracker from '../../assets/images/hydration_tracker.png';
 import meditationPortal from '../../assets/images/meditation_portal.png';
 import { Card, Services } from '../../types';
-import { mainBoardStyle, cardStyle, sideStyle, gridStyle, imageStyle, titleStyle } from './styles';
+import { mainBoardStyle, cardStyle, sideStyle, gridStyle, imageStyle, titleStyle, sideStyleDark } from './styles';
 
 const services: Card[] = [
   {
@@ -36,7 +36,11 @@ const services: Card[] = [
   },
 ];
 
-function Mainboard() {
+type props = {
+  theme: boolean;
+};
+
+function Mainboard({ theme }: props) {
   const handleCardClick = (id: string) => {
     /**
      * @TODO:
@@ -47,7 +51,7 @@ function Mainboard() {
   const renderGridContent = (card: Card) => (
     <Grid item xs={12} sm={6} key={card.id} style={gridStyle}>
       <Flippy flipOnHover={true} flipDirection="horizontal" style={cardStyle} onClick={() => handleCardClick(card.id)}>
-        <FrontSide style={sideStyle}>
+        <FrontSide style={theme ? sideStyle : sideStyleDark}>
           <div style={titleStyle}>{card.name}</div>
           <div style={imageStyle(card.img)}></div>
         </FrontSide>

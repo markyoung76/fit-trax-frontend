@@ -18,14 +18,19 @@ import {
   avatarStyle,
   drawerStyle,
   iconButtonStyle,
-  navStyle,
   logoStyle,
   boxStyle,
   buttonStyle,
   drawerPaperStyle,
 } from './styles';
+import ThemeSwitch from '../ThemeSwitch';
 
-const Nav = () => {
+type props = {
+  isLight: boolean;
+  setIsLight: Function;
+};
+
+const Nav = ({ isLight, setIsLight }: props) => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [username, setUsername] = React.useState('');
   const [age, setAge] = React.useState('');
@@ -63,6 +68,7 @@ const Nav = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
+            <ThemeSwitch onClick={() => setIsLight(!isLight)} />
             <Tooltip title="User Account">
               <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">
                 <Avatar sx={avatarStyle}>

@@ -19,6 +19,11 @@ export const sideStyle = {
   borderRadius: '1rem',
   boxShadow: '0px 0px 4px 3px #6296ea',
 };
+export const sideStyleDark = {
+  backgroundColor: '#FFB25B',
+  borderRadius: '1rem',
+  boxShadow: '0px 0px 4px 3px #FFB25B',
+};
 
 export const titleStyle = {
   fontWeight: 600,
