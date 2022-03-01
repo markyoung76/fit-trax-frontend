@@ -24,6 +24,9 @@ import {
   drawerPaperStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
+import { useAuth0 } from '@auth0/auth0-react';
+import LoginButton from '../LoginButton';
+import LogoutButton from '../LogoutButton';
 
 type props = {
   isLight: boolean;
@@ -31,6 +34,7 @@ type props = {
 };
 
 const Nav = ({ isLight, setIsLight }: props) => {
+  const { isAuthenticated } = useAuth0();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [username, setUsername] = React.useState('');
   const [age, setAge] = React.useState('');
@@ -127,6 +131,9 @@ const Nav = ({ isLight, setIsLight }: props) => {
               <Button variant="contained" onClick={handleFormSubmit} sx={buttonStyle}>
                 Save
               </Button>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              {isAuthenticated ? <LogoutButton /> : <LoginButton />}
             </Box>
           </Drawer>
         </Toolbar>
