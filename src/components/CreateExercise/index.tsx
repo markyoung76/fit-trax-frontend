@@ -38,15 +38,45 @@ export default function CreateExercise() {
             className={css.gridMargin}
             sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}
           >
-            <TextField fullWidth required label="Exercise Name" />
-            <Grid className={css.gridMargin} sx={{ display: 'flex' }} item xs={4}>
-              <TextField className={css.smallInputFields} required label="Sets" sx={{ maxWidth: '7rem' }} />
+            <TextField
+              fullWidth
+              required
+              label="Exercise Name"
+              sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
+            />
+            <Grid className={css.gridMargin} sx={{ display: 'flex', margin: '1rem 0' }} item xs={4}>
+              <TextField
+                className={css.smallInputFields}
+                required
+                label="Sets"
+                sx={{ maxWidth: '7rem', border: '5px solid #6296EA', borderRadius: '1.3rem' }}
+              />
             </Grid>
-            <Grid className={css.gridMargin} sx={{ display: 'flex', justifyContent: 'center' }} item xs={4}>
-              <TextField className={css.smallInputFields} required label="Reps" />
+            <Grid
+              className={css.gridMargin}
+              sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+              item
+              xs={4}
+            >
+              <TextField
+                className={css.smallInputFields}
+                required
+                label="Reps"
+                sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
+              />
             </Grid>
-            <Grid className={css.gridMargin} sx={{ display: 'flex', justifyContent: 'end' }} item xs={4}>
-              <TextField className={css.smallInputFields} required label="Rest Period" />
+            <Grid
+              className={css.gridMargin}
+              sx={{ display: 'flex', justifyContent: 'end', margin: '1rem 0' }}
+              item
+              xs={4}
+            >
+              <TextField
+                className={css.smallInputFields}
+                required
+                label="Rest Period"
+                sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
+              />
             </Grid>
           </Box>
         ))}
