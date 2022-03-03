@@ -8,6 +8,14 @@ import { Box } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
+interface exercisesOBJ {
+  exercise_name: string;
+  sets: number;
+  reps: number;
+  rest_period: string;
+  workout_ref: string;
+}
+
 export default function CreateExercise() {
   const [exerciseNumber, setExerciseNumber] = useState([1]);
 
@@ -26,9 +34,10 @@ export default function CreateExercise() {
     }
   };
   //
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
-    // e.preventDefault();
-    const newExercises = [{}];
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const event = e.target as HTMLFormElement;
+    // const newExercises = [{}];
   };
 
   return (
@@ -37,12 +46,25 @@ export default function CreateExercise() {
         className={css.formStyle}
         onSubmit={(e: React.SyntheticEvent) => {
           e.preventDefault();
+          let index = 0;
+          const exercisesArray = [];
           const event = e.target as HTMLFormElement;
-          for (let i = 0; i < 8; i += 2) {
-            const ourEvent = event[i] as HTMLInputElement;
-            console.log(ourEvent.value);
-          }
-          // console.log(e.target);
+          exerciseNumber.forEach((el) => {
+            const targetName = event[index] as HTMLInputElement;
+            const targetSets = event[index + 2] as HTMLInputElement;
+            const targetReps = event[index + 4] as HTMLInputElement;
+            const targetRest = event[index + 6] as HTMLInputElement;
+
+            const exerciseObject: exercisesOBJ = {
+              exercise_name: targetName.value,
+              sets: Number(targetSets.value),
+              reps: Number(targetReps.value),
+              rest_period: targetRest.value,
+              workout_ref: 'non given yet', //somehow import uuid from latest workout or have it passed as a prop from the previous component
+            };
+            exercisesArray.push(exerciseObject);
+            console.log(exercisesArray);
+          });
         }}
       >
         <Grid container>
