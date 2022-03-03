@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { WorkoutType, WorkoutDifficulty } from '../../../types';
+import { Container } from '@mui/material';
+import { textFieldStyle } from './styles';
 
 const workoutType = [WorkoutType.FullBody, WorkoutType.UpperBody, WorkoutType.LowerBody];
 
@@ -22,48 +24,49 @@ const ExercisePlannerStepOne = (): JSX.Element => {
 
   return (
     <>
-      <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField id="outlined-basic" label="Workout Name" variant="outlined" />
-        <TextField
-          id="outlined-select-workoutType"
-          select
-          label="Workout Type"
-          value={workout}
-          onChange={handleWorkoutType}
-          helperText="Please select your workout type"
+      <Container fixed sx={textFieldStyle}>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '50ch' },
+          }}
+          noValidate
+          autoComplete="off"
         >
-          {workoutType.map((workout) => {
-            return (
-              <MenuItem key={workout} value={workout}>
-                {workout}
-              </MenuItem>
-            );
-          })}
-        </TextField>
-        <TextField
-          id="outlined-select-workoutDifficulty"
-          select
-          label="Workout Difficulty"
-          value={workoutLevel}
-          onChange={handleWorkoutDifficulty}
-          helperText="Please select your workout difficulty"
-        >
-          {workoutDifficulty.map((workoutLevel) => {
-            return (
-              <MenuItem key={workoutLevel} value={workoutLevel}>
-                {workoutLevel}
-              </MenuItem>
-            );
-          })}
-        </TextField>
-      </Box>
+          <TextField id="outlined-basic" label="Workout Name" variant="outlined" />
+          <TextField
+            id="outlined-select-workoutType"
+            select
+            label="Workout Type"
+            value={workout}
+            onChange={handleWorkoutType}
+            size="medium"
+          >
+            {workoutType.map((workout) => {
+              return (
+                <MenuItem key={workout} value={workout}>
+                  {workout}
+                </MenuItem>
+              );
+            })}
+          </TextField>
+          <TextField
+            id="outlined-select-workoutDifficulty"
+            select
+            label="Workout Difficulty"
+            value={workoutLevel}
+            onChange={handleWorkoutDifficulty}
+          >
+            {workoutDifficulty.map((workoutLevel) => {
+              return (
+                <MenuItem key={workoutLevel} value={workoutLevel}>
+                  {workoutLevel}
+                </MenuItem>
+              );
+            })}
+          </TextField>
+        </Box>
+      </Container>
     </>
   );
 };
