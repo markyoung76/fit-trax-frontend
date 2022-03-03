@@ -1,12 +1,13 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './CreateExercise.module.css';
 import { useState } from 'react';
 import { Box } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { json } from 'stream/consumers';
 
 interface exercisesOBJ {
   exercise_name: string;
@@ -15,9 +16,26 @@ interface exercisesOBJ {
   rest_period: string;
   workout_ref: string;
 }
+interface exercisesPromise extends exercisesOBJ {
+  id: string;
+}
 
 export default function CreateExercise() {
   const [exerciseNumber, setExerciseNumber] = useState([1]);
+
+  var workoutRef: string;
+  useEffect(() => {
+    async function getLatestWorkoutRef() {
+      const result = await fetch('https://fit-trax-backend-main.vercel.app/api/workouts'); //nooooo! we need to make a new route that delivers the latest workout to us
+      const data: exercisesPromise[] = await result.json();
+      if (data) {
+        const latestWorkout = data[data.length - 1];
+        workoutRef = latestWorkout.id;
+        console.log('workoutREf', workoutRef);
+      }
+    }
+    getLatestWorkoutRef();
+  }, []);
 
   const handleAddExerciseClick = () => {
     const newArray = [...exerciseNumber, 1];
@@ -33,12 +51,12 @@ export default function CreateExercise() {
       setExerciseNumber(newArray);
     }
   };
-  //
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const event = e.target as HTMLFormElement;
-    // const newExercises = [{}];
-  };
+
+  // const handleSubmit = (e: React.SyntheticEvent) => {
+  //   e.preventDefault();
+  //   const event = e.target as HTMLFormElement;
+  //   // const newExercises = [{}];
+  // };
 
   return (
     <Container maxWidth="md">
@@ -47,7 +65,7 @@ export default function CreateExercise() {
         onSubmit={(e: React.SyntheticEvent) => {
           e.preventDefault();
           let index = 0;
-          const exercisesArray = [];
+          const exercisesArray: exercisesOBJ[] = [];
           const event = e.target as HTMLFormElement;
           exerciseNumber.forEach((el) => {
             const targetName = event[index] as HTMLInputElement;
@@ -59,12 +77,20 @@ export default function CreateExercise() {
               exercise_name: targetName.value,
               sets: Number(targetSets.value),
               reps: Number(targetReps.value),
-              rest_period: targetRest.value,
-              workout_ref: 'non given yet', //somehow import uuid from latest workout or have it passed as a prop from the previous component
+              rest_period: targetRest.value + 'seconds',
+              workout_ref: workoutRef,
             };
             exercisesArray.push(exerciseObject);
+            index += 8;
             console.log(exercisesArray);
           });
+
+          fetch('https://fit-trax-backend-main.vercel.app/api/exercises', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(exercisesArray),
+          });
+          console.log('sending post request', exercisesArray);
         }}
       >
         <Grid container>
