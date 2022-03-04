@@ -28,19 +28,24 @@ const ExercisePlannerStepOne = (): JSX.Element => {
         <Box
           component="form"
           sx={{
-            '& > :not(style)': { m: 1, width: '50ch' },
+            '& > :not(style)': { m: 1, width: '78ch' },
           }}
           noValidate
           autoComplete="off"
         >
-          <TextField id="outlined-basic" label="Workout Name" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            label="Workout Name"
+            variant="outlined"
+            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
+          />
           <TextField
             id="outlined-select-workoutType"
             select
             label="Workout Type"
             value={workout}
             onChange={handleWorkoutType}
-            size="medium"
+            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
           >
             {workoutType.map((workout) => {
               return (
@@ -56,6 +61,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             label="Workout Difficulty"
             value={workoutLevel}
             onChange={handleWorkoutDifficulty}
+            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
           >
             {workoutDifficulty.map((workoutLevel) => {
               return (

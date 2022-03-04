@@ -5,7 +5,8 @@ import Step from '@mui/material/Step';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { StepLabel } from '@mui/material';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import DoneIcon from '@mui/icons-material/Done';
 interface Props {
   steps: string[];
   stepsContent: JSX.Element[];
@@ -68,13 +69,27 @@ export default function Wizard({ steps, stepsContent }: Props) {
           <Box sx={{ mt: 5, mb: 3 }}>{renderStepContent()}</Box>
 
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-              Back
+            <Button
+              variant="outlined"
+              color="secondary"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ borderRadius: '1rem' }}
+            >
+              <ArrowBackIosNewIcon />
             </Button>
 
             <Box sx={{ flex: '1 1 auto' }} />
 
-            <Button onClick={handleNext}>{activeStep === steps.length - 1 ? 'Finish' : 'Next'}</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: '1rem' }}
+              color="secondary"
+              onClick={handleNext}
+            >
+              {activeStep === steps.length - 1 ? 'Finish' : <DoneIcon />}
+            </Button>
           </Box>
         </React.Fragment>
       )}
