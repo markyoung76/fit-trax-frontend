@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
+import { Routes, Route, Link } from 'react-router-dom';
+
 import Nav from '../Nav';
-import LoginButton from '../LoginButton';
-import LogoutButton from '../LogoutButton';
-import Profile from '../Profile';
 import Mainboard from '../Mainboard';
 import ExercisePlanner from '../ExercisePlanner';
 import { lightTheme, darkTheme } from '../../styles/muiThemes';
 import './App.scss';
+import Homepage from '../Homepage';
+import WorkoutDisplay from '../WorkoutDisplayCard';
+import CreateExercise from '../CreateExercise';
 
 const App = (): JSX.Element => {
   const { isLoading } = useAuth0();
@@ -34,11 +36,11 @@ const App = (): JSX.Element => {
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
       <Nav setIsLight={setIsLight} isLight={isLight} />
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-
-      {renderRoutes()}
+      <Routes>
+        <Route path="/" element={<Homepage isLight={isLight} />} />
+        {/* <Route path="/exercise-planner" element={<ExercisePlannerPage />} /> */}
+        <Route path="/workouts" element={<CreateExercise />} />
+      </Routes>
     </ThemeProvider>
   );
 };

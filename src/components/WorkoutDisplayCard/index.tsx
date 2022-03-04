@@ -20,11 +20,7 @@ export default function WorkoutDisplay() {
     async function getAllExercise() {
       console.log('all exercises');
 
-      fetch(
-        `https://fit-trax-backend-main.vercel.app/api/exercises/${selectedWorkout}`
-          ? selectedWorkout.id
-          : 'dbd0d2c1-84f9-4413-b4ed-eed2b266d10d',
-      )
+      fetch('https://fit-trax-backend-main.vercel.app/api/exercises/' + selectedWorkout.id)
         .then((response) => response.json())
         .then((data) => setAllExercise(data));
     }
@@ -66,7 +62,7 @@ export default function WorkoutDisplay() {
     <Container maxWidth="md">
       <Typography>workout name</Typography>
 
-      <Grid container>{allExercise.map(renderExercise)}</Grid>
+      <Grid container>{allExercise.map((el) => renderExercise(el))}</Grid>
     </Container>
   );
 }
