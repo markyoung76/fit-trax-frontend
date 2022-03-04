@@ -8,7 +8,6 @@ import { Box } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { json } from 'stream/consumers';
-
 interface exercisesOBJ {
   exercise_name: string;
   sets: number;
@@ -19,10 +18,8 @@ interface exercisesOBJ {
 interface exercisesPromise extends exercisesOBJ {
   id: string;
 }
-
 export default function CreateExercise() {
   const [exerciseNumber, setExerciseNumber] = useState([1]);
-
   var workoutRef: string;
   useEffect(() => {
     async function getLatestWorkoutRef() {
@@ -36,14 +33,11 @@ export default function CreateExercise() {
     }
     getLatestWorkoutRef();
   }, []);
-
   const handleAddExerciseClick = () => {
     const newArray = [...exerciseNumber, 1];
     console.log(newArray);
-
     setExerciseNumber(newArray);
   };
-
   const handleRemoveExerciseClick = () => {
     if (exerciseNumber.length > 1) {
       const newArray = [...exerciseNumber];
@@ -51,15 +45,16 @@ export default function CreateExercise() {
       setExerciseNumber(newArray);
     }
   };
-
   // const handleSubmit = (e: React.SyntheticEvent) => {
   //   e.preventDefault();
   //   const event = e.target as HTMLFormElement;
   //   // const newExercises = [{}];
   // };
-
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="sm" sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}>
+      <Typography variant="h4" align="center" fontWeight="bold" paragraph>
+        Exercise Planner
+      </Typography>
       <form
         className={css.formStyle}
         onSubmit={(e: React.SyntheticEvent) => {
@@ -72,7 +67,6 @@ export default function CreateExercise() {
             const targetSets = event[index + 2] as HTMLInputElement;
             const targetReps = event[index + 4] as HTMLInputElement;
             const targetRest = event[index + 6] as HTMLInputElement;
-
             const exerciseObject: exercisesOBJ = {
               exercise_name: targetName.value,
               sets: Number(targetSets.value),
@@ -84,7 +78,6 @@ export default function CreateExercise() {
             index += 8;
             console.log(exercisesArray);
           });
-
           fetch('https://fit-trax-backend-main.vercel.app/api/exercises', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -113,7 +106,7 @@ export default function CreateExercise() {
                   className={css.smallInputFields}
                   required
                   label="Sets"
-                  sx={{ maxWidth: '7rem', border: '5px solid #6296EA', borderRadius: '1.3rem' }}
+                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
                 />
               </Grid>
               <Grid
@@ -138,7 +131,7 @@ export default function CreateExercise() {
                 <TextField
                   className={css.smallInputFields}
                   required
-                  label="Rest Period"
+                  label="Rest"
                   sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
                 />
               </Grid>
@@ -146,33 +139,56 @@ export default function CreateExercise() {
           ))}
         </Grid>
         <Grid container>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center' }} className={css.gridMargin}>
-            <Button variant="outlined" sx={{ borderRadius: '1rem' }} onClick={handleRemoveExerciseClick}>
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            className={css.gridMargin}
+          >
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
+              onClick={handleRemoveExerciseClick}
+            >
               <ClearIcon />
             </Button>
           </Grid>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center' }} className={css.gridMargin}>
-            <Button variant="contained" sx={{ borderRadius: '1rem' }} onClick={handleAddExerciseClick}>
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            className={css.gridMargin}
+          >
+            <Button
+              variant="contained"
+              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
+              onClick={handleAddExerciseClick}
+            >
               <AddIcon />
             </Button>
           </Grid>
           <Grid
             item
             xs={6}
-            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
           >
-            <Button variant="outlined" sx={{ borderRadius: '1rem' }} color="secondary">
+            <Button variant="outlined" sx={{ borderRadius: '1rem', padding: '0.5rem  2.5rem' }} color="secondary">
               <ArrowBackIosNewIcon />
             </Button>
           </Grid>
           <Grid
             item
             xs={6}
-            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
           >
-            <Button type="submit" variant="contained" sx={{ borderRadius: '1rem' }} color="secondary">
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
+              color="secondary"
+            >
               <DoneIcon />
             </Button>
           </Grid>
