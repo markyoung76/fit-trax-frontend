@@ -33,3 +33,9 @@ export interface Card {
   latestDetails: JSX.Element;
   img: string;
 }
+
+export enum WorkoutType {
+  FullBody = 'Full Body',
+  UpperBody = 'Upper Body',
+  LowerBody = 'Lower Body',
+}
