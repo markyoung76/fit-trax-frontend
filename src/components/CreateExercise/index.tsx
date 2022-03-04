@@ -71,7 +71,7 @@ export default function CreateExercise() {
               exercise_name: targetName.value,
               sets: Number(targetSets.value),
               reps: Number(targetReps.value),
-              rest_period: targetRest.value + 'seconds',
+              rest_period: targetRest.value + ' sec',
               workout_ref: workoutRef,
             };
             exercisesArray.push(exerciseObject);
