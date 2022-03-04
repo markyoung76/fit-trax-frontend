@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Grid from '@mui/material/Grid';
@@ -11,46 +12,69 @@ import { mainBoardStyle, cardStyle, sideStyle, gridStyle, imageStyle, titleStyle
 
 const services: Card[] = [
   {
-    id: '1',
+    id: Services.ExercisePlanner,
     name: Services.ExercisePlanner,
     latestDetails: <>Latest Workout</>,
     img: exercisePlanner,
   },
   {
-    id: '2',
+    id: Services.MealPlanner,
     name: Services.MealPlanner,
     latestDetails: <>Latest Meal</>,
     img: mealPlanner,
   },
   {
-    id: '3',
+    id: Services.HydrationTracker,
     name: Services.HydrationTracker,
     latestDetails: <>Latest Workout</>,
     img: hydrationTracker,
   },
   {
-    id: '4',
+    id: Services.MeditationPortal,
     name: Services.MeditationPortal,
     latestDetails: <>Latest Meal</>,
     img: meditationPortal,
   },
 ];
 
-type props = {
+interface Props {
   theme: boolean;
-};
+}
 
-function Mainboard({ theme }: props) {
-  const handleCardClick = (id: string) => {
-    /**
-     * @TODO:
-     * Card clicked -> open modal with id
-     */
+function Mainboard({ theme }: Props) {
+  const navigate = useNavigate();
+
+  const handleCardClick = (id: Services) => {
+    switch (id) {
+      case Services.ExercisePlanner: {
+        navigate('exercise-planner');
+        break;
+      }
+      case Services.MealPlanner: {
+        navigate('meal-planner');
+        break;
+      }
+      case Services.HydrationTracker: {
+        navigate('exercise-planner');
+        break;
+      }
+      case Services.MeditationPortal: {
+        navigate('meal-planner');
+        break;
+      }
+      default:
+        break;
+    }
   };
 
-  const renderGridContent = (card: Card) => (
+  const renderCard = (card: Card) => (
     <Grid item xs={12} sm={6} key={card.id} style={gridStyle}>
-      <Flippy flipOnHover={true} flipDirection="horizontal" style={cardStyle} onClick={() => handleCardClick(card.id)}>
+      <Flippy
+        flipOnHover={true}
+        flipDirection="horizontal"
+        style={cardStyle}
+        onClick={() => handleCardClick(card.id as Services)}
+      >
         <FrontSide style={theme ? sideStyle : sideStyleDark}>
           <div style={titleStyle}>{card.name}</div>
           <div style={imageStyle(card.img)}></div>
@@ -64,7 +88,7 @@ function Mainboard({ theme }: props) {
   return (
     <Container fixed sx={mainBoardStyle}>
       <Grid container spacing={8}>
-        {services.map(renderGridContent)}
+        {services.map(renderCard)}
       </Grid>
     </Container>
   );

@@ -1,19 +1,35 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import Nav from '../Nav';
 import Mainboard from '../Mainboard';
+import ExercisePlanner from '../ExercisePlanner';
 import { lightTheme, darkTheme } from '../../styles/muiThemes';
 import './App.scss';
 import Homepage from '../Homepage';
 import WorkoutDisplay from '../WorkoutDisplayCard';
 import CreateExercise from '../CreateExercise';
 
-function App() {
+const App = (): JSX.Element => {
   const { isLoading } = useAuth0();
   const [isLight, setIsLight] = useState(true);
+
+  const renderRoutes = (): JSX.Element => {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Mainboard theme={isLight} />} />
+          <Route path="/exercise-planner" element={<ExercisePlanner />} />
+          {/* <Route path="/meal-planner" element={} />
+          <Route path="/hydration-tracker" element={} />
+          <Route path="/meditation-portal" element={} /> */}
+        </Routes>
+      </BrowserRouter>
+    );
+  };
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -27,6 +43,6 @@ function App() {
       </Routes>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

@@ -1,3 +1,7 @@
+export const appBarStyle = {
+  boxShadow: 'none',
+};
+
 export const avatarStyle = {
   color: 'black',
   backgroundColor: 'transparent',

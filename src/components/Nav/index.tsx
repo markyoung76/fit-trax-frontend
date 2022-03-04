@@ -22,16 +22,18 @@ import {
   boxStyle,
   buttonStyle,
   drawerPaperStyle,
+  appBarStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 
-type props = {
+interface Props {
   isLight: boolean;
   setIsLight: Function;
-};
+}
+
 
 const Nav = ({ isLight, setIsLight }: props) => {
   const { isAuthenticated } = useAuth0();
@@ -64,7 +66,7 @@ const Nav = ({ isLight, setIsLight }: props) => {
   };
 
   return (
-    <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
+    <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>

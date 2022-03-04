@@ -5,7 +5,6 @@ export const mainBoardStyle = {
 export const gridStyle = {
   display: 'flex',
   justifyContent: 'center',
-  paddingLeft: '0',
 };
 
 export const cardStyle = {
