@@ -34,8 +34,7 @@ interface Props {
   setIsLight: Function;
 }
 
-
-const Nav = ({ isLight, setIsLight }: props) => {
+const Nav = ({ isLight, setIsLight }: Props) => {
   const { isAuthenticated } = useAuth0();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [username, setUsername] = React.useState('');
