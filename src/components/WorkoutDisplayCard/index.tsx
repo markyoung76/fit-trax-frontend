@@ -32,11 +32,7 @@ export default function WorkoutDisplayCard() {
     }
     async function getAllExercise() {
       console.log('all exercises');
-      fetch(
-        'https://fit-trax-backend-main.vercel.app/api/exercises/' + selectedWorkout
-          ? selectedWorkout.id
-          : 'dbd0d2c1-84f9-4413-b4ed-eed2b266d10d',
-      )
+      fetch('https://fit-trax-backend-main.vercel.app/api/exercises/' + selectedWorkout.id)
         .then((response) => response.json())
         .then((data) => setAllExercise(data));
     }
@@ -48,11 +44,11 @@ export default function WorkoutDisplayCard() {
   };
   const handleClose = (el: workoutObj) => {
     console.log(el);
-    // setSelectedWorkout(el);
+    setSelectedWorkout(el);
     setAnchorElNav(null);
   };
   return (
-    <Container maxWidth="md" sx={{ border: '5px solid #6296EA', borderRadius: '1.8rem' }}>
+    <Container maxWidth="sm" sx={{ border: '5px solid #6296EA', borderRadius: '1.8rem' }}>
       <Box sx={{ display: 'flex' }}>
         <IconButton
           size="large"
@@ -65,7 +61,15 @@ export default function WorkoutDisplayCard() {
         >
           <KeyboardArrowDownIcon />
         </IconButton>
-        <Menu open={Boolean(anchorElNav)}>
+        <Menu
+          open={Boolean(anchorElNav)}
+          anchorEl={anchorElNav}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          keepMounted
+        >
           {allWorkout.map((el) => (
             <MenuItem key={el.id}>
               <Typography onClick={() => handleClose(el)}>{el.workout_name}</Typography>
