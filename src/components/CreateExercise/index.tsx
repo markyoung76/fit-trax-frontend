@@ -156,12 +156,22 @@ export default function CreateExercise() {
               <AddIcon />
             </Button>
           </Grid>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center' }} className={css.gridMargin}>
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            className={css.gridMargin}
+          >
             <Button variant="outlined" sx={{ borderRadius: '1rem' }} color="secondary">
               <ArrowBackIosNewIcon />
             </Button>
           </Grid>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center' }} className={css.gridMargin}>
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
+            className={css.gridMargin}
+          >
             <Button type="submit" variant="contained" sx={{ borderRadius: '1rem' }} color="secondary">
               <DoneIcon />
             </Button>

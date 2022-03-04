@@ -44,7 +44,7 @@ export default function Wizard({ steps, stepsContent }: Props) {
           } = {};
 
           if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            labelProps.optional = <Typography variant="caption"></Typography>;
           }
 
           return (

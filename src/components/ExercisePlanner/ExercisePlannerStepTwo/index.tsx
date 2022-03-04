@@ -1,7 +1,8 @@
 import * as React from 'react';
+import CreateExercise from '../../CreateExercise';
 
 const ExercisePlannerStepTwo = (): JSX.Element => {
-  return <>Hello Exercise Step 2</>;
+  return <CreateExercise />;
 };
 
 export default ExercisePlannerStepTwo;
