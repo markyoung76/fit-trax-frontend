@@ -1,7 +1,8 @@
 import * as React from 'react';
+import WorkoutDisplayCard from '../../WorkoutDisplayCard';
 
 const ExercisePlannerStepThree = (): JSX.Element => {
-  return <>Hello Exercise Step 3</>;
+  return <WorkoutDisplayCard />;
 };
 
 export default ExercisePlannerStepThree;
