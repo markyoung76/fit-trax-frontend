@@ -9,7 +9,7 @@ import ExercisePlanner from '../ExercisePlanner';
 import { lightTheme, darkTheme } from '../../styles/muiThemes';
 import './App.scss';
 import Homepage from '../Homepage';
-import WorkoutDisplay from '../WorkoutDisplayCard';
+import WorkoutDisplayCard from '../WorkoutDisplayCard';
 import CreateExercise from '../CreateExercise';
 
 const App = (): JSX.Element => {
@@ -24,7 +24,7 @@ const App = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<Homepage isLight={isLight} />} />
         <Route path="/exercise-planner" element={<ExercisePlanner />} />
-        <Route path="/workouts" element={<CreateExercise />} />
+        <Route path="/workouts" element={<WorkoutDisplayCard />} />
         {/* <Route path="/meal-planner" element={} />
           <Route path="/hydration-tracker" element={} />
           <Route path="/meditation-portal" element={} /> */}
