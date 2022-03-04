@@ -31,7 +31,6 @@ export default function WorkoutDisplayCard() {
       setAllWorkout(data);
     }
     async function getAllExercise() {
-      console.log('all exercises');
       fetch('https://fit-trax-backend-main.vercel.app/api/exercises/' + selectedWorkout.id)
         .then((response) => response.json())
         .then((data) => setAllExercise(data));
@@ -43,7 +42,6 @@ export default function WorkoutDisplayCard() {
     setAnchorElNav(event.currentTarget);
   };
   const handleClose = (el: workoutObj) => {
-    console.log(el);
     setSelectedWorkout(el);
     setAnchorElNav(null);
   };
