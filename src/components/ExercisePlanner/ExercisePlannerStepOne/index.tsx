@@ -37,7 +37,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             id="outlined-basic"
             label="Workout Name"
             variant="outlined"
-            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
           />
           <TextField
             id="outlined-select-workoutType"
@@ -45,7 +45,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             label="Workout Type"
             value={workout}
             onChange={handleWorkoutType}
-            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
           >
             {workoutType.map((workout) => {
               return (
@@ -61,7 +61,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             label="Workout Difficulty"
             value={workoutLevel}
             onChange={handleWorkoutDifficulty}
-            sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
           >
             {workoutDifficulty.map((workoutLevel) => {
               return (

@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Button, Container, Grid, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import React, { useEffect } from 'react';
@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { json } from 'stream/consumers';
 
 interface exercisesOBJ {
   exercise_name: string;
@@ -101,20 +100,9 @@ export default function CreateExercise() {
               className={css.gridMargin}
               sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}
             >
-              <TextField
-                type="text"
-                fullWidth
-                required
-                label="Exercise Name"
-                sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-              />
+              <TextField type="text" fullWidth required label="Exercise Name" />
               <Grid className={css.gridMargin} sx={{ display: 'flex', margin: '1rem 0' }} item xs={4}>
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Sets"
-                  sx={{ maxWidth: '7rem', border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Sets" sx={{ maxWidth: '7rem' }} />
               </Grid>
               <Grid
                 className={css.gridMargin}
@@ -122,12 +110,7 @@ export default function CreateExercise() {
                 item
                 xs={4}
               >
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Reps"
-                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Reps" />
               </Grid>
               <Grid
                 className={css.gridMargin}
@@ -135,12 +118,7 @@ export default function CreateExercise() {
                 item
                 xs={4}
               >
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Rest Period"
-                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Rest Period" />
               </Grid>
             </Box>
           ))}
