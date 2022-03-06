@@ -46,7 +46,7 @@ export default function WorkoutDisplayCard() {
     setAnchorElNav(null);
   };
   return (
-    <Container maxWidth="sm" sx={{ border: '5px solid #6296EA', borderRadius: '1.8rem' }}>
+    <Container maxWidth="sm">
       <Box sx={{ display: 'flex' }}>
         <IconButton
           size="large"
