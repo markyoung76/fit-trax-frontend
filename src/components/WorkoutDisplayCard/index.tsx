@@ -1,4 +1,4 @@
-import { Grid, Container, Typography, Card, CardHeader, CardContent, Menu, MenuItem } from '@mui/material';
+import { Grid, Container, Typography, Card, CardContent, Menu, MenuItem } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/system';
 import { useState, useEffect } from 'react';
@@ -46,7 +46,7 @@ export default function WorkoutDisplayCard() {
     setAnchorElNav(null);
   };
   return (
-    <Container maxWidth="sm" sx={{ border: '5px solid #6296EA', borderRadius: '1.8rem' }}>
+    <Container maxWidth="sm">
       <Box sx={{ display: 'flex' }}>
         <IconButton
           size="large"

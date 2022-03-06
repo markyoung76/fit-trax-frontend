@@ -1,18 +1,24 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { StepLabel } from '@mui/material';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import DoneIcon from '@mui/icons-material/Done';
+import { actionsBoxStyle, buttonStyle, contentBoxStyle, wizardBoxStyle } from './styles';
 
 interface Props {
   steps: string[];
   stepsContent: JSX.Element[];
+  stepsTitles: string[];
 }
 
-export default function Wizard({ steps, stepsContent }: Props) {
+export default function Wizard({ steps, stepsContent, stepsTitles }: Props) {
   const [activeStep, setActiveStep] = React.useState(0);
+  const navigate = useNavigate();
 
   const isStepOptional = (step: number) => {
     return step === 1;
@@ -23,58 +29,60 @@ export default function Wizard({ steps, stepsContent }: Props) {
   };
 
   const handleBack = () => {
+    if (activeStep === 0) {
+      navigate('/');
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  const renderStepper = () => (
+    <Stepper alternativeLabel activeStep={activeStep}>
+      {steps.map((label, index) => {
+        const stepProps: { completed?: boolean } = {};
+        const labelProps: {
+          optional?: React.ReactNode;
+        } = {};
+
+        if (isStepOptional(index)) {
+          labelProps.optional = <Typography variant="caption"></Typography>;
+        }
+
+        return (
+          <Step key={label} {...stepProps}>
+            <StepLabel {...labelProps}>{label}</StepLabel>
+          </Step>
+        );
+      })}
+    </Stepper>
+  );
+
+  const renderStepTitle = () => (
+    <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>{stepsTitles[activeStep]}</h1>
+  );
 
   const renderStepContent = () => stepsContent[activeStep];
 
   if (!steps) return null;
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stepper alternativeLabel activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps: { completed?: boolean } = {};
-          const labelProps: {
-            optional?: React.ReactNode;
-          } = {};
-
-          if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption"></Typography>;
-          }
-
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+    <Box sx={wizardBoxStyle}>
+      {renderStepTitle()}
+      {renderStepper()}
 
       {activeStep === steps.length ? (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>All steps completed - you&apos;re finished</Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
-        </React.Fragment>
+        navigate('/')
       ) : (
         <React.Fragment>
-          <Box sx={{ mt: 5, mb: 3 }}>{renderStepContent()}</Box>
+          <Box sx={contentBoxStyle}>{renderStepContent()}</Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-              Back
+          <Box sx={actionsBoxStyle}>
+            <Button variant="outlined" color="secondary" onClick={handleBack} sx={buttonStyle}>
+              <ArrowBackIosNewIcon />
             </Button>
 
-            <Box sx={{ flex: '1 1 auto' }} />
-
-            <Button onClick={handleNext}>{activeStep === steps.length - 1 ? 'Finish' : 'Next'}</Button>
+            <Button type="submit" variant="contained" sx={buttonStyle} color="secondary" onClick={handleNext}>
+              {activeStep === steps.length - 1 ? 'Finish' : <DoneIcon />}
+            </Button>
           </Box>
         </React.Fragment>
       )}

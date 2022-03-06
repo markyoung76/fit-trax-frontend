@@ -26,13 +26,13 @@ const services: Card[] = [
   {
     id: Services.HydrationTracker,
     name: Services.HydrationTracker,
-    latestDetails: <>Latest Workout</>,
+    latestDetails: <>Latest Hydration</>,
     img: hydrationTracker,
   },
   {
     id: Services.MeditationPortal,
     name: Services.MeditationPortal,
-    latestDetails: <>Latest Meal</>,
+    latestDetails: <>Latest Meditation</>,
     img: meditationPortal,
   },
 ];
@@ -55,11 +55,11 @@ function Mainboard({ theme }: Props) {
         break;
       }
       case Services.HydrationTracker: {
-        navigate('exercise-planner');
+        navigate('hydration-tracker');
         break;
       }
       case Services.MeditationPortal: {
-        navigate('meal-planner');
+        navigate('meditation-portal');
         break;
       }
       default:
