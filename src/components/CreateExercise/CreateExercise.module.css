@@ -1,5 +1,6 @@
 .smallInputFields {
-  max-width: 8rem;
+  max-width: 7rem;
+  font-size: 8px;
 }
 
 .gridMargin {

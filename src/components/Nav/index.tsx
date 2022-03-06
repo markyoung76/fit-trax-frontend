@@ -68,7 +68,12 @@ const Nav = ({ isLight, setIsLight }: Props) => {
     <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}
+          >
             <img src={logoLightMode} alt="fit_trax_app_logo" style={logoStyle} />
           </Typography>
 

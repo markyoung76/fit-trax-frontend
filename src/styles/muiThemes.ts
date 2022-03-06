@@ -1,6 +1,10 @@
 import { createTheme } from '@mui/material';
 
 export const lightTheme = createTheme({
+  typography: {
+    fontFamily: ['Courier Prime', 'monospace'].join(','),
+  },
+
   palette: {
     mode: 'light',
 
@@ -43,6 +47,10 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+  typography: {
+    fontFamily: ['Courier Prime', 'monospace'].join(','),
+  },
+
   palette: {
     mode: 'dark',
 
