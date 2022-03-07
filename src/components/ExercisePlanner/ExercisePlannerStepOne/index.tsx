@@ -61,7 +61,6 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             id="outlined-basic"
             required
             label="Workout Name"
-            required
             value={workoutName}
             onChange={handleWorkoutName}
             variant="outlined"

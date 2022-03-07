@@ -24,7 +24,7 @@ export const sideStyle = {
 };
 
 export const sideStyleDark = {
-  backgroundColor: 'rgba(255, 178, 91, 0.25);',
+  backgroundColor: 'rgba(255, 178, 91, 0.25)',
   borderRadius: '1rem',
   boxShadow: '0px 0px 4px 3px #FFB25B',
 };
