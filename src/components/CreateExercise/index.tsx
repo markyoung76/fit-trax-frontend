@@ -32,7 +32,7 @@ export default function CreateExercise() {
       }
     }
     getLatestWorkoutRef();
-  }, []);
+  });
   const handleAddExerciseClick = () => {
     const newArray = [...exerciseNumber, 1];
     console.log(newArray);
