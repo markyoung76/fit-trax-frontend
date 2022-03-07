@@ -40,6 +40,10 @@ const ExercisePlannerStepOne = (): JSX.Element => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+
+    setWorkoutName('');
+    setWorkoutType('');
+    setWorkoutLevel('');
   };
 
   return (
