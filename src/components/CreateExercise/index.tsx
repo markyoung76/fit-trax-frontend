@@ -72,14 +72,19 @@ export default function CreateExercise() {
               workout_ref: workoutRef,
             };
             exercisesArray.push(exerciseObject);
+
+            targetName.value = '';
+            targetSets.value = '';
+            targetReps.value = '';
+            targetRest.value = '';
             index += 8;
-            console.log(exercisesArray);
           });
           fetch('https://fit-trax-backend-main.vercel.app/api/exercises', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(exercisesArray),
           });
+          setExerciseNumber([1]);
           console.log('sending post request', exercisesArray);
         }}
       >
