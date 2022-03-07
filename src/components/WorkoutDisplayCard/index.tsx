@@ -48,7 +48,7 @@ export default function WorkoutDisplayCard() {
   return (
     <Container maxWidth="sm">
       <Box sx={{ display: 'flex' }}>
-        <IconButton
+        {/* <IconButton
           size="large"
           aria-label="Select Workout"
           aria-controls="menu-appbar"
@@ -58,7 +58,7 @@ export default function WorkoutDisplayCard() {
           sx={{ alignSelf: 'flex-end' }}
         >
           <KeyboardArrowDownIcon />
-        </IconButton>
+        </IconButton> */}
         <Menu
           open={Boolean(anchorElNav)}
           anchorEl={anchorElNav}
@@ -75,9 +75,23 @@ export default function WorkoutDisplayCard() {
           ))}
         </Menu>
       </Box>
-      <Typography variant="h3" align="center" paragraph>
-        {selectedWorkout.workout_name}
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', paddingTop: '5rem' }}>
+        <Typography variant="h4" align="center" paragraph>
+          {selectedWorkout.workout_name}
+        </Typography>
+
+        <IconButton
+          size="large"
+          aria-label="Select Workout"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleOpenNavMenu}
+          color="inherit"
+          sx={{ alignSelf: 'flex-end', display: 'relative' }}
+        >
+          <KeyboardArrowDownIcon />
+        </IconButton>
+      </Box>
       <Grid container>
         {allExercise.map((el) => (
           <Grid item xs={12} key={el.id}>

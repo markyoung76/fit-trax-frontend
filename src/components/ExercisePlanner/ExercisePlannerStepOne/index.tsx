@@ -40,6 +40,10 @@ const ExercisePlannerStepOne = (): JSX.Element => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+
+    setWorkoutName('');
+    setWorkoutType('');
+    setWorkoutLevel('');
   };
 
   return (
@@ -57,6 +61,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             id="outlined-basic"
             required
             label="Workout Name"
+            required
             value={workoutName}
             onChange={handleWorkoutName}
             variant="outlined"

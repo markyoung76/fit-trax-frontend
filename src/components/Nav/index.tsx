@@ -78,7 +78,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <ThemeSwitch onClick={() => setIsLight(!isLight)} />
+            <ThemeSwitch sx={{ marginRight: '2rem' }} onClick={() => setIsLight(!isLight)} />
             <Tooltip title="User Account">
               <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">
                 <Avatar sx={avatarStyle}>
@@ -130,12 +130,22 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 />
               </Box>
 
-              <Button variant="outlined" onClick={handleFormCancel}>
-                Cancel
+              <Button
+                variant="outlined"
+                color="secondary"
+                sx={{ borderRadius: '1rem', padding: '0.5rem 1rem' }}
+                onClick={handleFormCancel}
+              >
+                CLEAR
               </Button>
 
-              <Button variant="contained" onClick={handleFormSubmit} sx={buttonStyle}>
-                Save
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{ borderRadius: '1rem', padding: '0.5rem 1rem' }}
+                onClick={handleFormSubmit}
+              >
+                SAVE
               </Button>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
