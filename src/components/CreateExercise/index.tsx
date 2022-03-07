@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { json } from 'stream/consumers';
+
 interface exercisesOBJ {
   exercise_name: string;
   sets: number;
