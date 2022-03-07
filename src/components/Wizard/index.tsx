@@ -57,7 +57,7 @@ export default function Wizard({ steps, stepsContent, stepsTitles }: Props) {
   );
 
   const renderStepTitle = () => (
-    <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>{stepsTitles[activeStep]}</h1>
+    <h1 style={{ textAlign: 'center', marginBottom: '2rem', fontFamily: 'Courier New' }}>{stepsTitles[activeStep]}</h1>
   );
 
   const renderStepContent = () => stepsContent[activeStep];

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { WorkoutType, WorkoutDifficulty } from '../../../types';
 import { Button, Container } from '@mui/material';
-import { textFieldStyle } from './styles';
+import { textFieldStyle, buttonStyle } from './styles';
 import { v4 as uuid } from 'uuid';
 
 const workoutTypes = [WorkoutType.FullBody, WorkoutType.UpperBody, WorkoutType.LowerBody];
@@ -48,13 +48,14 @@ const ExercisePlannerStepOne = (): JSX.Element => {
         <Box
           component="form"
           sx={{
-            '& > :not(style)': { m: 1, width: '78ch' },
+            '& > :not(style)': { m: 1, width: '55ch' },
           }}
           noValidate
           autoComplete="off"
         >
           <TextField
             id="outlined-basic"
+            required
             label="Workout Name"
             value={workoutName}
             onChange={handleWorkoutName}
@@ -64,6 +65,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-select-workoutType"
             select
+            required
             label="Workout Type"
             value={workoutType}
             onChange={handleWorkoutType}
@@ -80,6 +82,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-select-workoutDifficulty"
             select
+            required
             label="Workout Difficulty"
             value={workoutLevel}
             onChange={handleWorkoutDifficulty}
@@ -94,7 +97,11 @@ const ExercisePlannerStepOne = (): JSX.Element => {
             })}
           </TextField>
         </Box>
-        <Button onClick={handleSaveWorkout}>Create Workout</Button>
+        <Box sx={{ paddingTop: '3rem' }}>
+          <Button onClick={handleSaveWorkout} variant="contained" sx={buttonStyle}>
+            Save
+          </Button>
+        </Box>
       </Container>
     </>
   );

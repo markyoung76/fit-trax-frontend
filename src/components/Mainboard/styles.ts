@@ -1,5 +1,5 @@
 export const mainBoardStyle = {
-  paddingTop: '4rem',
+  paddingTop: '3rem',
 };
 
 export const gridStyle = {
@@ -8,15 +8,19 @@ export const gridStyle = {
 };
 
 export const cardStyle = {
-  width: ' 22rem',
-  height: '12rem',
+  width: '33rem',
+  height: '18rem',
   cursor: 'pointer',
 };
 
 export const sideStyle = {
   backgroundColor: '#fff',
   borderRadius: '1rem',
+  fontWeight: 600,
+  fontSize: '1.4rem',
   boxShadow: '0px 0px 4px 3px #6296ea',
+  textAlign: 'center',
+  fontFamily: 'Courier New',
 };
 
 export const sideStyleDark = {
@@ -27,7 +31,10 @@ export const sideStyleDark = {
 
 export const titleStyle = {
   fontWeight: 600,
+  fontSize: '1.4rem',
   marginBottom: '1rem',
+  textAlign: 'center' as const,
+  fontFamily: 'Courier New',
 };
 
 export const imageStyle = (img: string) => {
