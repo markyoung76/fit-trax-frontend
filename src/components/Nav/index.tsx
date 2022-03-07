@@ -78,7 +78,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <ThemeSwitch onClick={() => setIsLight(!isLight)} />
+            <ThemeSwitch sx={{ marginRight: '2rem' }} onClick={() => setIsLight(!isLight)} />
             <Tooltip title="User Account">
               <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">
                 <Avatar sx={avatarStyle}>
