@@ -56,6 +56,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-basic"
             label="Workout Name"
+            required
             value={workoutName}
             onChange={handleWorkoutName}
             variant="outlined"
@@ -64,6 +65,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-select-workoutType"
             select
+            required
             label="Workout Type"
             value={workoutType}
             onChange={handleWorkoutType}
@@ -80,6 +82,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-select-workoutDifficulty"
             select
+            required
             label="Workout Difficulty"
             value={workoutLevel}
             onChange={handleWorkoutDifficulty}
