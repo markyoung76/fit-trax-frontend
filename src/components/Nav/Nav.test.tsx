@@ -4,11 +4,11 @@ import Nav from './index';
 
 describe('Nav', () => {
   test('it loads and displays nav', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
   });
 
   test('it should render the logo', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     const logo = screen.getByAltText('fit_trax_app_logo');
 
@@ -17,7 +17,7 @@ describe('Nav', () => {
   });
 
   test('it should render the avatar and when clicked show the drawer', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     const avatar = screen.getByTestId('avatar');
     expect(avatar).toBeInTheDocument();
@@ -27,42 +27,42 @@ describe('Nav', () => {
   });
 
   test("it should render the drawer's title", () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     expect(screen.getByText('User Account')).toBeInTheDocument();
   });
 
   test('it should render the username label in the drawer', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     expect(screen.getByLabelText('Username')).toBeInTheDocument();
   });
 
   test('it should render the age label in the drawer', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     expect(screen.getByLabelText('Age')).toBeInTheDocument();
   });
 
   test('it should render the gender label in the drawer', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     expect(screen.getByLabelText('Gender')).toBeInTheDocument();
   });
 
   test('it should render the level of fitness label in the drawer', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     expect(screen.getByLabelText('Level of fitness')).toBeInTheDocument();
   });
 
   test('it should close the drawer on save', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     userEvent.click(screen.getByText('Save'));
@@ -71,7 +71,7 @@ describe('Nav', () => {
   });
 
   test('it should close the drawer on cancel', () => {
-    render(<Nav />);
+    render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
     userEvent.click(screen.getByText('Cancel'));
