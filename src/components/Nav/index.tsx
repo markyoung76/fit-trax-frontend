@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  Drawer,
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Container,
-  Avatar,
-  Tooltip,
-  Button,
-} from '@mui/material';
+import { Drawer, AppBar, Box, Toolbar, IconButton, Container, Avatar, Tooltip, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logoLightMode from '../../assets/images/fit_trax_app_logo_lightmode.png';
@@ -20,9 +9,9 @@ import {
   iconButtonStyle,
   logoStyle,
   boxStyle,
-  buttonStyle,
   drawerPaperStyle,
   appBarStyle,
+  toolbarStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -67,17 +56,10 @@ const Nav = ({ isLight, setIsLight }: Props) => {
   return (
     <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}
-          >
-            <img src={logoLightMode} alt="fit_trax_app_logo" style={logoStyle} />
-          </Typography>
+        <Toolbar disableGutters sx={toolbarStyle}>
+          <img src={logoLightMode} alt="fit_trax_app_logo" style={logoStyle} />
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box>
             <ThemeSwitch sx={{ marginRight: '2rem' }} onClick={() => setIsLight(!isLight)} />
             <Tooltip title="User Account">
               <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">

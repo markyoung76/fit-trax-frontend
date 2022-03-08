@@ -5,8 +5,6 @@ import React, { useEffect } from 'react';
 import css from './CreateExercise.module.css';
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import DoneIcon from '@mui/icons-material/Done';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 interface exercisesOBJ {
   exercise_name: string;
@@ -139,7 +137,7 @@ export default function CreateExercise() {
             className={css.gridMargin}
           >
             <Button
-              variant="contained"
+              variant="outlined"
               sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
               onClick={handleAddExerciseClick}
               id="addInputs"
@@ -147,6 +145,7 @@ export default function CreateExercise() {
               <AddIcon />
             </Button>
           </Grid>
+
           <Grid
             item
             xs={6}
@@ -173,7 +172,13 @@ export default function CreateExercise() {
               <DoneIcon />
             </Button>
           </Grid>
+
         </Grid>
+        <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '1rem' }}>
+          <Button type="submit" variant="contained" sx={{ borderRadius: '1rem', minWidth: '8rem' }} color="primary">
+            SAVE
+          </Button>
+        </Box>
       </form>
     </Container>
   );
