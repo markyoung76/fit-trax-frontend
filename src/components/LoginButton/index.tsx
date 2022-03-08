@@ -8,7 +8,7 @@ const LoginButton = () => {
     <Button
       variant="contained"
       color="secondary"
-      sx={{ borderRadius: '1.563rem', padding: '0.5rem 2rem' }}
+      sx={{ borderRadius: '1rem', minWidth: '8rem' }}
       onClick={() => loginWithRedirect()}
     >
       LOGIN
