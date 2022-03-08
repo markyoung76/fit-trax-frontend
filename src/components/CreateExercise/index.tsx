@@ -18,7 +18,7 @@ interface exercisesPromise extends exercisesOBJ {
 }
 export default function CreateExercise() {
   const [exerciseNumber, setExerciseNumber] = useState([1]);
-  // var workoutRef: string;
+
   const workoutRef = useRef('');
 
   useEffect(() => {
@@ -45,11 +45,7 @@ export default function CreateExercise() {
       setExerciseNumber(newArray);
     }
   };
-  // const handleSubmit = (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   const event = e.target as HTMLFormElement;
-  //   // const newExercises = [{}];
-  // };
+
   return (
     <Container maxWidth="sm">
       <form
