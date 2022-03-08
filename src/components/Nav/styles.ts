@@ -39,3 +39,9 @@ export const toolbarStyle = {
   display: 'flex',
   justifyContent: 'space-between',
 };
+
+export const userAccountButtons = {
+  borderRadius: '1rem',
+  padding: '0.5rem 1rem',
+  width: '5.5rem',
+};
