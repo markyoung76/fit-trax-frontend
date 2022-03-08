@@ -36,12 +36,9 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           }}
         >
           <Box
-            component="form"
             sx={{
               '& > :not(style)': { m: 1, width: '55ch' },
             }}
-            noValidate
-            autoComplete="off"
           >
             <TextField
               id="outlined-basic"
