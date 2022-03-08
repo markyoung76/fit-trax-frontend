@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Container } from '@mui/material';
+import { Container, useTheme } from '@mui/material';
 import Wizard from '../Wizard';
 import { containerStyle } from './styles';
 import ExercisePlannerStepOne from './ExercisePlannerStepOne';
@@ -11,8 +10,10 @@ const stepsContent = [<ExercisePlannerStepOne />, <ExercisePlannerStepTwo />, <E
 const stepsTitles = ['Workout Planner', 'Exercise Planner', 'Workout Completion'];
 
 const ExercisePlanner = () => {
+  const theme = useTheme();
+
   return (
-    <Container fixed sx={containerStyle}>
+    <Container fixed sx={containerStyle(theme)}>
       <Wizard steps={steps} stepsContent={stepsContent} stepsTitles={stepsTitles} />
     </Container>
   );

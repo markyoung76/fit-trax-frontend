@@ -1,4 +1,4 @@
-import { Grid, Container, Typography, Card, CardContent, Menu, MenuItem } from '@mui/material';
+import { Grid, Container, Typography, Card, CardContent, Menu, MenuItem, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/system';
 import { useState, useEffect } from 'react';
@@ -24,6 +24,8 @@ export default function WorkoutDisplayCard() {
   const [allWorkout, setAllWorkout] = useState<workout>(workoutInitialState);
   const [allExercise, setAllExercise] = useState<exercise>(exerciseInitialState);
   const [selectedWorkout, setSelectedWorkout] = useState<workoutObj>(workoutInitialState[0]);
+  const theme = useTheme();
+
   useEffect(() => {
     async function getAllWorkouts() {
       const response = await fetch('https://fit-trax-backend-main.vercel.app/api/workouts');
@@ -75,7 +77,7 @@ export default function WorkoutDisplayCard() {
           ))}
         </Menu>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '5rem' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="h5" align="center">
           {selectedWorkout.workout_name}
         </Typography>
@@ -104,7 +106,7 @@ export default function WorkoutDisplayCard() {
               sx={{
                 maxWidth: '100%',
                 margin: '0.5rem 0',
-                border: '3px solid #6296EA',
+                border: `3px solid ${theme.palette.primary.main}`,
                 borderRadius: '1.3rem',
                 boxShadow: 'none',
               }}

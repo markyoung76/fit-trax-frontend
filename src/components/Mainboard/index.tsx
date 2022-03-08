@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Container from '@mui/material/Container';
+import { Container, useTheme, CustomTheme } from '@mui/material';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Grid from '@mui/material/Grid';
 import exercisePlanner from '../../assets/images/exercise_planner.png';
@@ -7,7 +7,7 @@ import mealPlanner from '../../assets/images/meal_planner.png';
 import hydrationTracker from '../../assets/images/hydration_tracker.png';
 import meditationPortal from '../../assets/images/meditation_portal.png';
 import { Card, Services } from '../../types';
-import { mainBoardStyle, cardStyle, sideStyle, gridStyle, imageStyle, titleStyle, sideStyleDark } from './styles';
+import { mainBoardStyle, cardStyle, sideStyle, gridStyle, imageStyle, titleStyle } from './styles';
 
 const services: Card[] = [
   {
@@ -36,12 +36,9 @@ const services: Card[] = [
   },
 ];
 
-interface Props {
-  theme: boolean;
-}
-
-function Mainboard({ theme }: Props) {
+function Mainboard() {
   const navigate = useNavigate();
+  const theme = useTheme() as CustomTheme;
 
   const handleCardClick = (id: Services) => {
     switch (id) {
@@ -74,12 +71,12 @@ function Mainboard({ theme }: Props) {
         style={cardStyle}
         onClick={() => handleCardClick(card.id as Services)}
       >
-        <FrontSide style={theme ? sideStyle : sideStyleDark}>
+        <FrontSide style={sideStyle(theme)}>
           <div style={titleStyle}>{card.name}</div>
           <div style={imageStyle(card.img)}></div>
         </FrontSide>
 
-        <BackSide style={sideStyle}>{card.latestDetails}</BackSide>
+        <BackSide style={sideStyle(theme)}>{card.latestDetails}</BackSide>
       </Flippy>
     </Grid>
   );
