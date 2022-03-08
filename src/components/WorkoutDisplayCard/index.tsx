@@ -75,8 +75,8 @@ export default function WorkoutDisplayCard() {
           ))}
         </Menu>
       </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', paddingTop: '5rem' }}>
-        <Typography variant="h4" align="center" paragraph>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '5rem' }}>
+        <Typography variant="h5" align="center">
           {selectedWorkout.workout_name}
         </Typography>
 
@@ -88,7 +88,11 @@ export default function WorkoutDisplayCard() {
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
           color="inherit"
-          sx={{ alignSelf: 'flex-end', display: 'relative' }}
+          sx={{
+            alignSelf: 'flex-end',
+            display: 'relative',
+            padding: '10px',
+          }}
         >
           <KeyboardArrowDownIcon />
         </IconButton>
@@ -96,7 +100,15 @@ export default function WorkoutDisplayCard() {
       <Grid container>
         {allExercise.map((el) => (
           <Grid item xs={12} key={el.id}>
-            <Card sx={{ maxWidth: '100%', margin: '0.5rem 0', border: '5px solid #6296EA', borderRadius: '1.8rem' }}>
+            <Card
+              sx={{
+                maxWidth: '100%',
+                margin: '0.5rem 0',
+                border: '3px solid #6296EA',
+                borderRadius: '1.3rem',
+                boxShadow: 'none',
+              }}
+            >
               <CardContent>
                 <Grid container>
                   <Grid item xs={5}>

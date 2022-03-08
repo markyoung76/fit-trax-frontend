@@ -12,6 +12,7 @@ import {
   drawerPaperStyle,
   appBarStyle,
   toolbarStyle,
+  userAccountButtons,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -79,7 +80,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
             onClose={toggleDrawer(false)}
           >
             <Box component="form" sx={drawerStyle} noValidate autoComplete="off">
-              <h3>User Account</h3>
+              <h3 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Courier New' }}>User Account</h3>
 
               <Box sx={boxStyle}>
                 <TextField
@@ -112,25 +113,22 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 />
               </Box>
 
-              <Button
-                variant="outlined"
-                color="secondary"
-                sx={{ borderRadius: '1rem', padding: '0.5rem 1rem' }}
-                onClick={handleFormCancel}
-              >
-                CLEAR
-              </Button>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button variant="contained" color="secondary" sx={userAccountButtons} onClick={handleFormSubmit}>
+                  SAVE
+                </Button>
 
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{ borderRadius: '1rem', padding: '0.5rem 1rem' }}
-                onClick={handleFormSubmit}
-              >
-                SAVE
-              </Button>
+                <Button variant="outlined" color="secondary" sx={userAccountButtons} onClick={handleFormCancel}>
+                  CLOSE
+                </Button>
+              </Box>
             </Box>
+
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              {' '}
+              <h3 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Courier New' }}>User Login</h3>
+            </Box>
+            <Box style={{ display: 'flex', justifyContent: 'center', paddingTop: '0.5rem' }}>
               {isAuthenticated ? <LogoutButton /> : <LoginButton />}
             </Box>
           </Drawer>

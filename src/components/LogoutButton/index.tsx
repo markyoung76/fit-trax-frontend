@@ -5,7 +5,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <Button variant="contained" sx={{ borderRadius: '1.563rem', padding: '0.5rem 2rem' }} onClick={() => logout()}>
+    <Button variant="contained" sx={{ borderRadius: '1rem', minWidth: '8rem' }} onClick={() => logout()}>
       LOGOUT
     </Button>
   );

@@ -6,7 +6,6 @@ import css from './CreateExercise.module.css';
 import { useState } from 'react';
 import { Box } from '@mui/material';
 
-
 interface exercisesOBJ {
   exercise_name: string;
   sets: number;
@@ -146,19 +145,6 @@ export default function CreateExercise() {
               <AddIcon />
             </Button>
           </Grid>
-
-          <Grid
-            item
-            xs={6}
-            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
-            className={css.gridMargin}
-          ></Grid>
-          <Grid
-            item
-            xs={6}
-            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
-            className={css.gridMargin}
-          ></Grid>
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '1rem' }}>
           <Button
