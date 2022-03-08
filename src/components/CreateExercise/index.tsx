@@ -1,10 +1,9 @@
-import { Button, Container, Grid, TextField } from '@mui/material';
+import { Button, Container, Grid, TextField, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import React, { useEffect, useRef } from 'react';
 import css from './CreateExercise.module.css';
 import { useState } from 'react';
-import { Box } from '@mui/material';
 
 interface exercisesOBJ {
   exercise_name: string;
@@ -23,7 +22,7 @@ export default function CreateExercise() {
 
   useEffect(() => {
     async function getLatestWorkoutRef() {
-      const result = await fetch('https://fit-trax-backend-main.vercel.app/api/workouts'); //nooooo! we need to make a new route that delivers the latest workout to us
+      const result = await fetch('https://fit-trax-backend-main.vercel.app/api/workouts');
       const data: exercisesPromise[] = await result.json();
       if (data) {
         const latestWorkout = data[data.length - 1];
