@@ -1,3 +1,5 @@
+import { CustomTheme } from '@mui/material';
+
 export const mainBoardStyle = {
   paddingTop: '3rem',
 };
@@ -13,20 +15,16 @@ export const cardStyle = {
   cursor: 'pointer',
 };
 
-export const sideStyle = {
-  backgroundColor: '#fff',
-  borderRadius: '1rem',
-  fontWeight: 600,
-  fontSize: '1.4rem',
-  boxShadow: '0px 0px 4px 3px #6296ea',
-  textAlign: 'center',
-  fontFamily: 'Courier New',
-};
-
-export const sideStyleDark = {
-  backgroundColor: 'rgba(255, 178, 91, 0.25)',
-  borderRadius: '1rem',
-  boxShadow: '0px 0px 4px 3px #FFB25B',
+export const sideStyle = (theme: CustomTheme) => {
+  return {
+    backgroundColor: theme.negativeColor,
+    borderRadius: '1rem',
+    fontWeight: 600,
+    fontSize: '1.4rem',
+    boxShadow: `0px 0px 4px 3px ${theme.palette.primary.main}`,
+    textAlign: 'center',
+    fontFamily: 'Courier New',
+  };
 };
 
 export const titleStyle = {

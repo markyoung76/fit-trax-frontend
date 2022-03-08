@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { StepLabel } from '@mui/material';
+import { useTheme, Box, Stepper, Step, Button, Typography, StepLabel } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import DoneIcon from '@mui/icons-material/Done';
 import { actionsBoxStyle, buttonStyle, contentBoxStyle, wizardBoxStyle } from './styles';
@@ -19,6 +14,7 @@ interface Props {
 export default function Wizard({ steps, stepsContent, stepsTitles }: Props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const isStepOptional = (step: number) => {
     return step === 1;
@@ -73,7 +69,7 @@ export default function Wizard({ steps, stepsContent, stepsTitles }: Props) {
         navigate('/')
       ) : (
         <React.Fragment>
-          <Box sx={contentBoxStyle}>{renderStepContent()}</Box>
+          <Box sx={contentBoxStyle(theme)}>{renderStepContent()}</Box>
 
           <Box sx={actionsBoxStyle}>
             <Button variant="outlined" color="secondary" onClick={handleBack} sx={buttonStyle}>

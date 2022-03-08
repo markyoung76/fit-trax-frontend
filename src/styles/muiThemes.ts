@@ -22,6 +22,9 @@ export const lightTheme = createTheme({
     },
   },
 
+  negativeColor: '#FDFBF9',
+  iconColor: 'black',
+
   components: {
     MuiOutlinedInput: {
       styleOverrides: {
@@ -67,6 +70,9 @@ export const darkTheme = createTheme({
       default: 'black',
     },
   },
+
+  negativeColor: '#402C17',
+  iconColor: 'white',
 
   components: {
     MuiOutlinedInput: {

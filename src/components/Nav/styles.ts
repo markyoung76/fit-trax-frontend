@@ -1,16 +1,29 @@
+import { CustomTheme } from '@mui/material';
+
 export const appBarStyle = {
   boxShadow: 'none',
 };
 
-export const avatarStyle = {
-  color: 'black',
-  backgroundColor: 'transparent',
-  border: '2px black solid',
+export const avatarStyle = (theme: CustomTheme) => {
+  return {
+    color: theme.iconColor,
+    backgroundColor: 'transparent',
+    border: `2px ${theme.iconColor} solid`,
+  };
 };
 
-export const iconButtonStyle = {
-  border: '3px #6296ea solid',
-  padding: '2px',
+export const iconStyle = (theme: CustomTheme) => {
+  return {
+    fontSize: 45,
+    color: theme.iconColor,
+  };
+};
+
+export const iconButtonStyle = (theme: CustomTheme) => {
+  return {
+    border: `3px ${theme.palette.primary.main} solid`,
+    padding: '2px',
+  };
 };
 
 export const drawerStyle = {
@@ -18,13 +31,10 @@ export const drawerStyle = {
   '& > :not(style)': { m: 3 },
 };
 
-export const drawerPaperStyle = {
-  backgroundColor: '#fdfbf9',
-};
-
-export const navStyle = {
-  backgroundColor: '#fdfbf9',
-  boxShadow: 'none',
+export const drawerPaperStyle = (theme: CustomTheme) => {
+  return {
+    backgroundColor: theme.palette.background.paper,
+  };
 };
 
 export const logoStyle = {

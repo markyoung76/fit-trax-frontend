@@ -1,8 +1,21 @@
 import React from 'react';
-import { Drawer, AppBar, Box, Toolbar, IconButton, Container, Avatar, Tooltip, Button } from '@mui/material';
+import {
+  Drawer,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Container,
+  Avatar,
+  Tooltip,
+  Button,
+  useTheme,
+  CustomTheme,
+} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import logoLightMode from '../../assets/images/fit_trax_app_logo_lightmode.png';
+import logoDarkMode from '../../assets/images/fit_trax_app_logo_darkmode.png';
 import {
   avatarStyle,
   drawerStyle,
@@ -13,6 +26,7 @@ import {
   appBarStyle,
   toolbarStyle,
   userAccountButtons,
+  iconStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -31,6 +45,8 @@ const Nav = ({ isLight, setIsLight }: Props) => {
   const [age, setAge] = React.useState('');
   const [fitness, setFitness] = React.useState('');
   const [gender, setGender] = React.useState('');
+
+  const theme = useTheme() as CustomTheme;
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -62,14 +78,14 @@ const Nav = ({ isLight, setIsLight }: Props) => {
     <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={toolbarStyle}>
-          <img src={logoLightMode} alt="fit_trax_app_logo" style={logoStyle} />
+          <img src={isLight ? logoLightMode : logoDarkMode} alt="fit_trax_app_logo" style={logoStyle} />
 
           <Box>
             <ThemeSwitch sx={{ marginRight: '2rem' }} onClick={() => setIsLight(!isLight)} />
             <Tooltip title="User Account">
-              <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle} data-testid="avatar">
-                <Avatar sx={avatarStyle}>
-                  <PersonOutlineIcon sx={{ fontSize: 45 }} />
+              <IconButton onClick={toggleDrawer(true)} sx={iconButtonStyle(theme)} data-testid="avatar">
+                <Avatar sx={avatarStyle(theme)}>
+                  <PersonOutlineIcon sx={iconStyle(theme)} />
                 </Avatar>
               </IconButton>
             </Tooltip>
@@ -77,7 +93,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
 
           <Drawer
             PaperProps={{
-              sx: drawerPaperStyle,
+              sx: drawerPaperStyle(theme),
             }}
             anchor="right"
             open={openDrawer}
