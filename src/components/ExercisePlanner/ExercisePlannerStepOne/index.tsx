@@ -11,101 +11,82 @@ const workoutTypes = [WorkoutType.FullBody, WorkoutType.UpperBody, WorkoutType.L
 const workoutDifficulties = [WorkoutDifficulty.Beginner, WorkoutDifficulty.Intermediate, WorkoutDifficulty.Advanced];
 
 const ExercisePlannerStepOne = (): JSX.Element => {
-  const [workoutType, setWorkoutType] = React.useState('');
-  const [workoutLevel, setWorkoutLevel] = React.useState('');
-  const [workoutName, setWorkoutName] = React.useState('');
-
-  const handleWorkoutName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWorkoutName(event.target.value);
-  };
-
-  const handleWorkoutType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWorkoutType(event.target.value);
-  };
-
-  const handleWorkoutDifficulty = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWorkoutLevel(event.target.value);
-  };
-
-  const handleSaveWorkout = () => {
-    const data = {
-      id: uuid(),
-      workout_name: workoutName,
-      workout_type: workoutType,
-      workout_difficulty: workoutLevel,
-    };
-
-    fetch('https://fit-trax-backend-main.vercel.app/api/workouts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-
-    setWorkoutName('');
-    setWorkoutType('');
-    setWorkoutLevel('');
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    // const data = {
+    //   id: uuid(),
+    //   workout_name: workoutName,
+    //   workout_type: workoutType,
+    //   workout_difficulty: workoutLevel,
+    // };
+    // fetch('https://fit-trax-backend-main.vercel.app/api/workouts', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(data),
+    // });
+    console.log(e);
   };
 
   return (
     <>
       <Container fixed sx={textFieldStyle}>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '55ch' },
+        <form
+          onSubmit={(e: React.SyntheticEvent) => {
+            handleSubmit(e);
           }}
-          noValidate
-          autoComplete="off"
         >
-          <TextField
-            id="outlined-basic"
-            required
-            label="Workout Name"
-            value={workoutName}
-            onChange={handleWorkoutName}
-            variant="outlined"
-            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
-          />
-          <TextField
-            id="outlined-select-workoutType"
-            select
-            required
-            label="Workout Type"
-            value={workoutType}
-            onChange={handleWorkoutType}
-            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '55ch' },
+            }}
+            noValidate
+            autoComplete="off"
           >
-            {workoutTypes.map((workout) => {
-              return (
-                <MenuItem key={workout} value={workout}>
-                  {workout}
-                </MenuItem>
-              );
-            })}
-          </TextField>
-          <TextField
-            id="outlined-select-workoutDifficulty"
-            select
-            required
-            label="Workout Difficulty"
-            value={workoutLevel}
-            onChange={handleWorkoutDifficulty}
-            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
-          >
-            {workoutDifficulties.map((workoutLevel) => {
-              return (
-                <MenuItem key={workoutLevel} value={workoutLevel}>
-                  {workoutLevel}
-                </MenuItem>
-              );
-            })}
-          </TextField>
-        </Box>
-        <Box sx={{ paddingTop: '3rem' }}>
-          <Button onClick={handleSaveWorkout} variant="contained" sx={buttonStyle}>
-            Save
-          </Button>
-        </Box>
+            <TextField
+              id="outlined-basic"
+              required
+              label="Workout Name"
+              variant="outlined"
+              sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
+            />
+            <TextField
+              id="outlined-select-workoutType"
+              select
+              required
+              label="Workout Type"
+              sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
+            >
+              {workoutTypes.map((workout) => {
+                return (
+                  <MenuItem key={workout} value={workout}>
+                    {workout}
+                  </MenuItem>
+                );
+              })}
+            </TextField>
+            <TextField
+              id="outlined-select-workoutDifficulty"
+              select
+              required
+              label="Workout Difficulty"
+              sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
+            >
+              {workoutDifficulties.map((workoutLevel) => {
+                return (
+                  <MenuItem key={workoutLevel} value={workoutLevel}>
+                    {workoutLevel}
+                  </MenuItem>
+                );
+              })}
+            </TextField>
+          </Box>
+          <Box sx={{ paddingTop: '3rem' }}>
+            <Button type="submit" variant="contained" sx={buttonStyle}>
+              Save
+            </Button>
+          </Box>
+        </form>
       </Container>
     </>
   );
