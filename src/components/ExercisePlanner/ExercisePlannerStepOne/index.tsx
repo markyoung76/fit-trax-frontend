@@ -13,18 +13,24 @@ const workoutDifficulties = [WorkoutDifficulty.Beginner, WorkoutDifficulty.Inter
 const ExercisePlannerStepOne = (): JSX.Element => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    // const data = {
-    //   id: uuid(),
-    //   workout_name: workoutName,
-    //   workout_type: workoutType,
-    //   workout_difficulty: workoutLevel,
-    // };
-    // fetch('https://fit-trax-backend-main.vercel.app/api/workouts', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data),
-    // });
-    console.log(e);
+    const workoutForm = e.target as HTMLFormElement;
+    const workoutName = workoutForm[0] as HTMLInputElement;
+    const workoutType = workoutForm[2] as HTMLInputElement;
+    const workoutLevel = workoutForm[4] as HTMLInputElement;
+    const data = {
+      id: uuid(),
+      workout_name: workoutName.value,
+      workout_type: workoutType.value,
+      workout_difficulty: workoutLevel.value,
+    };
+    fetch('https://fit-trax-backend-main.vercel.app/api/workouts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    workoutName.value = '';
+    workoutType.value = '';
+    workoutLevel.value = '';
   };
 
   return (
