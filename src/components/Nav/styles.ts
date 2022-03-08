@@ -35,6 +35,7 @@ export const boxStyle = {
   display: 'flex',
 };
 
-export const buttonStyle = {
-  float: 'right',
+export const toolbarStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
 };

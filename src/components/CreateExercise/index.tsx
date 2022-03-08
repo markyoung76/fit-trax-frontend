@@ -1,12 +1,11 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Button, Container, Grid, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import React, { useEffect } from 'react';
 import css from './CreateExercise.module.css';
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import DoneIcon from '@mui/icons-material/Done';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
 
 interface exercisesOBJ {
   exercise_name: string;
@@ -32,7 +31,7 @@ export default function CreateExercise() {
       }
     }
     getLatestWorkoutRef();
-  }, []);
+  });
   const handleAddExerciseClick = () => {
     const newArray = [...exerciseNumber, 1];
     console.log(newArray);
@@ -51,10 +50,7 @@ export default function CreateExercise() {
   //   // const newExercises = [{}];
   // };
   return (
-    <Container maxWidth="sm" sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}>
-      <Typography variant="h4" align="center" fontWeight="bold" paragraph>
-        Exercise Planner
-      </Typography>
+    <Container maxWidth="sm">
       <form
         className={css.formStyle}
         onSubmit={(e: React.SyntheticEvent) => {
@@ -75,65 +71,47 @@ export default function CreateExercise() {
               workout_ref: workoutRef,
             };
             exercisesArray.push(exerciseObject);
+
+            targetName.value = '';
+            targetSets.value = '';
+            targetReps.value = '';
+            targetRest.value = '';
             index += 8;
-            console.log(exercisesArray);
           });
           fetch('https://fit-trax-backend-main.vercel.app/api/exercises', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(exercisesArray),
           });
+          setExerciseNumber([1]);
           console.log('sending post request', exercisesArray);
         }}
+        id="createWorkoutForm"
       >
         <Grid container>
           {exerciseNumber.map((number, index) => (
-            <Box
-              id={number.toString()}
-              key={index}
-              className={css.gridMargin}
-              sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}
-            >
-              <TextField
-                type="text"
-                fullWidth
-                required
-                label="Exercise Name"
-                sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-              />
+            <Box key={index} className={css.gridMargin} sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}>
+              <TextField type="text" fullWidth required label="Exercise Name" id={index.toString()} />
               <Grid className={css.gridMargin} sx={{ display: 'flex', margin: '1rem 0' }} item xs={4}>
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Sets"
-                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Sets" id={(index + 10).toString()} />
               </Grid>
+
               <Grid
                 className={css.gridMargin}
                 sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
                 item
                 xs={4}
               >
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Reps"
-                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Reps" id={(index + 20).toString()} />
               </Grid>
+
               <Grid
                 className={css.gridMargin}
                 sx={{ display: 'flex', justifyContent: 'end', margin: '1rem 0' }}
                 item
                 xs={4}
               >
-                <TextField
-                  className={css.smallInputFields}
-                  required
-                  label="Rest"
-                  sx={{ border: '5px solid #6296EA', borderRadius: '1.3rem' }}
-                />
+                <TextField className={css.smallInputFields} required label="Rest" id={(index + 30).toString()} />
               </Grid>
             </Box>
           ))}
@@ -160,39 +138,39 @@ export default function CreateExercise() {
             className={css.gridMargin}
           >
             <Button
-              variant="contained"
+              variant="outlined"
               sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
               onClick={handleAddExerciseClick}
+              id="addInputs"
             >
               <AddIcon />
             </Button>
           </Grid>
+
           <Grid
             item
             xs={6}
             sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
-          >
-            <Button variant="outlined" sx={{ borderRadius: '1rem', padding: '0.5rem  2.5rem' }} color="secondary">
-              <ArrowBackIosNewIcon />
-            </Button>
-          </Grid>
+          ></Grid>
           <Grid
             item
             xs={6}
             sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
-              color="secondary"
-            >
-              <DoneIcon />
-            </Button>
-          </Grid>
+          ></Grid>
         </Grid>
+        <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '1rem' }}>
+          <Button
+            id="submitExercises"
+            type="submit"
+            variant="contained"
+            sx={{ borderRadius: '1rem', minWidth: '8rem' }}
+            color="primary"
+          >
+            SAVE
+          </Button>
+        </Box>
       </form>
     </Container>
   );

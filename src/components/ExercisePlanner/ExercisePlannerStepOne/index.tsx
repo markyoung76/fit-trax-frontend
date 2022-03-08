@@ -3,23 +3,47 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { WorkoutType, WorkoutDifficulty } from '../../../types';
-import { Container } from '@mui/material';
-import { textFieldStyle } from './styles';
+import { Button, Container } from '@mui/material';
+import { textFieldStyle, buttonStyle } from './styles';
+import { v4 as uuid } from 'uuid';
 
-const workoutType = [WorkoutType.FullBody, WorkoutType.UpperBody, WorkoutType.LowerBody];
-
-const workoutDifficulty = [WorkoutDifficulty.Beginner, WorkoutDifficulty.Intermediate, WorkoutDifficulty.Advanced];
+const workoutTypes = [WorkoutType.FullBody, WorkoutType.UpperBody, WorkoutType.LowerBody];
+const workoutDifficulties = [WorkoutDifficulty.Beginner, WorkoutDifficulty.Intermediate, WorkoutDifficulty.Advanced];
 
 const ExercisePlannerStepOne = (): JSX.Element => {
-  const [workout, setWorkout] = React.useState('');
+  const [workoutType, setWorkoutType] = React.useState('');
   const [workoutLevel, setWorkoutLevel] = React.useState('');
+  const [workoutName, setWorkoutName] = React.useState('');
+
+  const handleWorkoutName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setWorkoutName(event.target.value);
+  };
 
   const handleWorkoutType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWorkout(event.target.value);
+    setWorkoutType(event.target.value);
   };
 
   const handleWorkoutDifficulty = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWorkoutLevel(event.target.value);
+  };
+
+  const handleSaveWorkout = () => {
+    const data = {
+      id: uuid(),
+      workout_name: workoutName,
+      workout_type: workoutType,
+      workout_difficulty: workoutLevel,
+    };
+
+    fetch('https://fit-trax-backend-main.vercel.app/api/workouts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    setWorkoutName('');
+    setWorkoutType('');
+    setWorkoutLevel('');
   };
 
   return (
@@ -28,21 +52,30 @@ const ExercisePlannerStepOne = (): JSX.Element => {
         <Box
           component="form"
           sx={{
-            '& > :not(style)': { m: 1, width: '50ch' },
+            '& > :not(style)': { m: 1, width: '55ch' },
           }}
           noValidate
           autoComplete="off"
         >
-          <TextField id="outlined-basic" label="Workout Name" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            required
+            label="Workout Name"
+            value={workoutName}
+            onChange={handleWorkoutName}
+            variant="outlined"
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
+          />
           <TextField
             id="outlined-select-workoutType"
             select
+            required
             label="Workout Type"
-            value={workout}
+            value={workoutType}
             onChange={handleWorkoutType}
-            size="medium"
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
           >
-            {workoutType.map((workout) => {
+            {workoutTypes.map((workout) => {
               return (
                 <MenuItem key={workout} value={workout}>
                   {workout}
@@ -53,11 +86,13 @@ const ExercisePlannerStepOne = (): JSX.Element => {
           <TextField
             id="outlined-select-workoutDifficulty"
             select
+            required
             label="Workout Difficulty"
             value={workoutLevel}
             onChange={handleWorkoutDifficulty}
+            sx={{ maxWidth: '100%', margin: '0.5rem 0' }}
           >
-            {workoutDifficulty.map((workoutLevel) => {
+            {workoutDifficulties.map((workoutLevel) => {
               return (
                 <MenuItem key={workoutLevel} value={workoutLevel}>
                   {workoutLevel}
@@ -65,6 +100,11 @@ const ExercisePlannerStepOne = (): JSX.Element => {
               );
             })}
           </TextField>
+        </Box>
+        <Box sx={{ paddingTop: '3rem' }}>
+          <Button onClick={handleSaveWorkout} variant="contained" sx={buttonStyle}>
+            Save
+          </Button>
         </Box>
       </Container>
     </>

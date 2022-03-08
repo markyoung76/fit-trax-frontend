@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
@@ -26,13 +25,13 @@ const services: Card[] = [
   {
     id: Services.HydrationTracker,
     name: Services.HydrationTracker,
-    latestDetails: <>Latest Workout</>,
+    latestDetails: <>Latest Hydration</>,
     img: hydrationTracker,
   },
   {
     id: Services.MeditationPortal,
     name: Services.MeditationPortal,
-    latestDetails: <>Latest Meal</>,
+    latestDetails: <>Latest Meditation</>,
     img: meditationPortal,
   },
 ];
@@ -55,11 +54,11 @@ function Mainboard({ theme }: Props) {
         break;
       }
       case Services.HydrationTracker: {
-        navigate('exercise-planner');
+        navigate('hydration-tracker');
         break;
       }
       case Services.MeditationPortal: {
-        navigate('meal-planner');
+        navigate('meditation-portal');
         break;
       }
       default:
