@@ -80,7 +80,14 @@ export default function Wizard({ steps, stepsContent, stepsTitles }: Props) {
               <ArrowBackIosNewIcon />
             </Button>
 
-            <Button type="submit" variant="contained" sx={buttonStyle} color="secondary" onClick={handleNext}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={buttonStyle}
+              color="secondary"
+              onClick={handleNext}
+              id="nextButton"
+            >
               {activeStep === steps.length - 1 ? 'Finish' : <DoneIcon />}
             </Button>
           </Box>
