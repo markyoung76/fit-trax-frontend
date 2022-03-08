@@ -52,6 +52,10 @@ const Nav = ({ isLight, setIsLight }: Props) => {
 
   const handleFormCancel = () => {
     setOpenDrawer(false);
+    setUsername('');
+    setAge('');
+    setFitness('');
+    setGender('');
   };
 
   return (
@@ -119,7 +123,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 </Button>
 
                 <Button variant="outlined" color="secondary" sx={userAccountButtons} onClick={handleFormCancel}>
-                  CLOSE
+                  CLEAR
                 </Button>
               </Box>
             </Box>
