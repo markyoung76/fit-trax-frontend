@@ -81,6 +81,7 @@ export default function WorkoutDisplayCard() {
         </Typography>
 
         <IconButton
+          id="workoutMenu"
           size="large"
           aria-label="Select Workout"
           aria-controls="menu-appbar"

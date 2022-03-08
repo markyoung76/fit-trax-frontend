@@ -85,18 +85,14 @@ export default function CreateExercise() {
           setExerciseNumber([1]);
           console.log('sending post request', exercisesArray);
         }}
+        id="createWorkoutForm"
       >
         <Grid container>
           {exerciseNumber.map((number, index) => (
-            <Box
-              id={number.toString()}
-              key={index}
-              className={css.gridMargin}
-              sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}
-            >
-              <TextField type="text" fullWidth required label="Exercise Name" />
+            <Box key={index} className={css.gridMargin} sx={{ width: '100%', display: 'flex', flexWrap: 'wrap' }}>
+              <TextField type="text" fullWidth required label="Exercise Name" id={index.toString()} />
               <Grid className={css.gridMargin} sx={{ display: 'flex', margin: '1rem 0' }} item xs={4}>
-                <TextField className={css.smallInputFields} required label="Sets" />
+                <TextField className={css.smallInputFields} required label="Sets" id={(index + 10).toString()} />
               </Grid>
 
               <Grid
@@ -105,7 +101,7 @@ export default function CreateExercise() {
                 item
                 xs={4}
               >
-                <TextField className={css.smallInputFields} required label="Reps" />
+                <TextField className={css.smallInputFields} required label="Reps" id={(index + 20).toString()} />
               </Grid>
 
               <Grid
@@ -114,7 +110,7 @@ export default function CreateExercise() {
                 item
                 xs={4}
               >
-                <TextField className={css.smallInputFields} required label="Rest" />
+                <TextField className={css.smallInputFields} required label="Rest" id={(index + 30).toString()} />
               </Grid>
             </Box>
           ))}
@@ -144,10 +140,39 @@ export default function CreateExercise() {
               variant="outlined"
               sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
               onClick={handleAddExerciseClick}
+              id="addInputs"
             >
               <AddIcon />
             </Button>
           </Grid>
+
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
+            className={css.gridMargin}
+          >
+            <Button variant="outlined" sx={{ borderRadius: '1rem', padding: '0.5rem  2.5rem' }} color="secondary">
+              <ArrowBackIosNewIcon />
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
+            className={css.gridMargin}
+          >
+            <Button
+              id="submitExercises"
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
+              color="secondary"
+            >
+              <DoneIcon />
+            </Button>
+          </Grid>
+
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '1rem' }}>
           <Button type="submit" variant="contained" sx={{ borderRadius: '1rem', minWidth: '8rem' }} color="primary">
