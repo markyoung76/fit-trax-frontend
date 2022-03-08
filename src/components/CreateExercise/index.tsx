@@ -151,31 +151,22 @@ export default function CreateExercise() {
             xs={6}
             sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
-          >
-            <Button variant="outlined" sx={{ borderRadius: '1rem', padding: '0.5rem  2.5rem' }} color="secondary">
-              <ArrowBackIosNewIcon />
-            </Button>
-          </Grid>
+          ></Grid>
           <Grid
             item
             xs={6}
             sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0 2rem 0' }}
             className={css.gridMargin}
-          >
-            <Button
-              id="submitExercises"
-              type="submit"
-              variant="contained"
-              sx={{ borderRadius: '1rem', padding: '0.5rem 2.5rem' }}
-              color="secondary"
-            >
-              <DoneIcon />
-            </Button>
-          </Grid>
-
+          ></Grid>
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '1rem' }}>
-          <Button type="submit" variant="contained" sx={{ borderRadius: '1rem', minWidth: '8rem' }} color="primary">
+          <Button
+            id="submitExercises"
+            type="submit"
+            variant="contained"
+            sx={{ borderRadius: '1rem', minWidth: '8rem' }}
+            color="primary"
+          >
             SAVE
           </Button>
         </Box>
