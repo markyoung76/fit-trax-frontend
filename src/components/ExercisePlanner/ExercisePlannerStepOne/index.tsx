@@ -78,7 +78,7 @@ const ExercisePlannerStepOne = (): JSX.Element => {
               })}
             </TextField>
           </Box>
-          <Box sx={{ paddingTop: '3rem' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', minWidth: '100%', padding: '1rem 0' }}>
             <Button type="submit" variant="contained" sx={buttonStyle}>
               Save
             </Button>
