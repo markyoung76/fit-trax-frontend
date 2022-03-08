@@ -6,6 +6,7 @@ import css from './CreateExercise.module.css';
 import { useState } from 'react';
 import { Box } from '@mui/material';
 
+
 interface exercisesOBJ {
   exercise_name: string;
   sets: number;
