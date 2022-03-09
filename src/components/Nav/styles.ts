@@ -31,6 +31,12 @@ export const drawerStyle = {
   '& > :not(style)': { m: 3 },
 };
 
+export const h3Style = {
+  display: 'flex',
+  justifyContent: 'center',
+  fontFamily: 'Courier New',
+};
+
 export const drawerPaperStyle = (theme: CustomTheme) => {
   return {
     backgroundColor: theme.palette.background.paper,
@@ -43,6 +49,7 @@ export const logoStyle = {
 
 export const boxStyle = {
   display: 'flex',
+  justifyContent: 'space-between',
 };
 
 export const toolbarStyle = {
@@ -54,4 +61,15 @@ export const userAccountButtons = {
   borderRadius: '1rem',
   padding: '0.5rem 1rem',
   width: '5.5rem',
+};
+
+export const userLoginBoxStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+};
+
+export const boxLoginButtonStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  paddingTop: '0.5rem',
 };

@@ -70,11 +70,11 @@ describe('Nav', () => {
     expect(screen.getByRole('presentation', { hidden: true })).toBeTruthy();
   });
 
-  test('it should close the drawer on cancel', () => {
+  test('it should close the drawer on clear', () => {
     render(<Nav isLight={true} setIsLight={() => 'hello'} />);
 
     userEvent.click(screen.getByTestId('avatar'));
-    userEvent.click(screen.getByText('Cancel'));
+    userEvent.click(screen.getByText('Clear'));
 
     expect(screen.getByRole('presentation', { hidden: true })).toBeTruthy();
   });
