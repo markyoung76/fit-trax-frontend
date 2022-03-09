@@ -27,6 +27,9 @@ import {
   toolbarStyle,
   userAccountButtons,
   iconStyle,
+  h3Style,
+  userLoginBoxStyle,
+  boxLoginButtonStyle,
 } from './styles';
 import ThemeSwitch from '../ThemeSwitch';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -100,9 +103,9 @@ const Nav = ({ isLight, setIsLight }: Props) => {
             onClose={toggleDrawer(false)}
           >
             <Box component="form" sx={drawerStyle} noValidate autoComplete="off">
-              <h3 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Courier New' }}>User Account</h3>
+              <h3 style={h3Style}>User Account</h3>
 
-              <Box sx={boxStyle}>
+              <Box>
                 <TextField
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -111,11 +114,11 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 />
               </Box>
 
-              <Box sx={boxStyle}>
+              <Box>
                 <TextField value={age} onChange={(e) => setAge(e.target.value)} label="Age" variant="outlined" />
               </Box>
 
-              <Box sx={boxStyle}>
+              <Box>
                 <TextField
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
@@ -124,7 +127,7 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 />
               </Box>
 
-              <Box sx={boxStyle}>
+              <Box>
                 <TextField
                   value={fitness}
                   onChange={(e) => setFitness(e.target.value)}
@@ -133,24 +136,22 @@ const Nav = ({ isLight, setIsLight }: Props) => {
                 />
               </Box>
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Box sx={boxStyle}>
                 <Button variant="contained" color="secondary" sx={userAccountButtons} onClick={handleFormSubmit}>
-                  SAVE
+                  Save
                 </Button>
 
                 <Button variant="outlined" color="secondary" sx={userAccountButtons} onClick={handleFormCancel}>
-                  CLEAR
+                  Clear
                 </Button>
               </Box>
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              {' '}
-              <h3 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Courier New' }}>User Login</h3>
+            <Box sx={userLoginBoxStyle}>
+              <h3 style={h3Style}>User Login</h3>
             </Box>
-            <Box style={{ display: 'flex', justifyContent: 'center', paddingTop: '0.5rem' }}>
-              {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-            </Box>
+
+            <Box style={boxLoginButtonStyle}>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</Box>
           </Drawer>
         </Toolbar>
       </Container>
