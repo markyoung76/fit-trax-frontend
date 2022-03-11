@@ -81,7 +81,9 @@ const Nav = ({ isLight, setIsLight }: Props) => {
     <AppBar position="static" color="transparent" sx={appBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={toolbarStyle}>
-          <img src={isLight ? logoLightMode : logoDarkMode} alt="fit_trax_app_logo" style={logoStyle} />
+          <a href="/">
+            <img src={isLight ? logoLightMode : logoDarkMode} alt="fit_trax_app_logo" style={logoStyle} />
+          </a>
 
           <Box>
             <ThemeSwitch sx={{ marginRight: '2rem' }} onClick={() => setIsLight(!isLight)} />
